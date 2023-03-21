@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div></div>
+    <div>
+      <h1>同步组件</h1>
+      <h1>异步组件</h1>
+    </div>
     <div>
       <div>
         <div>

@@ -70,6 +70,10 @@ const router = new VueRouter({
             component: resolve => require(["@/page/defineProperty-Proxy"], resolve)
         },
         {
+            path: "/Object.freeze",
+            component: resolve => require(["@/page/Object.freeze"], resolve)
+        },
+        {
             path: "/water",
             component: resolve => require(["@/page/water"], resolve)
         },
