@@ -22,6 +22,7 @@ export default {
     }
   },
   provide() {
+    //非响应式
     return {
       msg: 'xxxxxx',
     }
