@@ -17,6 +17,10 @@ const router = new VueRouter({
             component: resolve => require(["@/page/brother-component"], resolve),
         },
         {
+            path: "/father-son-component",
+            component: resolve => require(["@/page/father-son-component"], resolve),
+        },
+        {
             path: "/test-api",
             component: resolve => require(["@/page/test-api"], resolve),
         },
