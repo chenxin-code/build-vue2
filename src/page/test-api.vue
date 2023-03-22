@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="getBaiduNews()">百度新闻</button>
-    <hr />
+    <hr/>
     <input v-model="query">
     <button @click="getTaobaoSearchSuggest()">淘宝搜索提示</button>
   </div>
@@ -11,22 +11,33 @@
 import {baiduNews, taobaoSearchSuggest} from '@/api';
 
 export default {
-  data(){
+  data() {
     return {
       query: '周杰伦'
     }
   },
   methods: {
-    getBaiduNews(){
+    getBaiduNews() {
       baiduNews({
-        url: 'widget?id=LocalNews&loc=5496&ajax=json',
+        methods: 'get',
+        url: 'widget',
+        params: {
+          id: 'LocalNews',
+          loc: 5496,
+          ajax: 'json',
+        },
       }).then(resp => {
         console.log('baiduNews', resp.data.data.LocalNews.data.rows);
       });
     },
-    getTaobaoSearchSuggest(){
+    getTaobaoSearchSuggest() {
       taobaoSearchSuggest({
-        url: 'sug?code=utf-8&q='+this.query,
+        methods: 'get',
+        url: 'sug',
+        params: {
+          code: 'utf-8',
+          q: this.query,
+        },
       }).then(resp => {
         console.log('taobaoSearchSuggest', resp.data.result);
       });
