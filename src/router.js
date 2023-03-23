@@ -29,7 +29,7 @@ const router = new VueRouter({
             component: resolve => require(["@/page/before-enter"], resolve),
             // 路由独享的守卫
             beforeEnter: (to, from, next) => {
-                console.log('路由独享的守卫','to',to,'from', from, 'next', next);
+                console.log('路由独享的守卫', 'to', to, 'from', from, 'next', next);
                 next();
             },
         },
@@ -58,6 +58,29 @@ const router = new VueRouter({
             ],
         },
         {
+            path: "/demo",
+            component: resolve => require(["@/page/demo/index"], resolve),
+            //嵌套路由
+            children: [
+                {
+                    path: 'water',
+                    component: resolve => require(["@/page/demo/water"], resolve),
+                },
+                {
+                    path: 'data-monitor',
+                    component: resolve => require(["@/page/demo/data-monitor"], resolve),
+                },
+                {
+                    path: 'pk',
+                    component: resolve => require(["@/page/demo/pk"], resolve),
+                },
+                {
+                    path: 'ssq',
+                    component: resolve => require(["@/page/demo/ssq"], resolve),
+                },
+            ],
+        },
+        {
             path: "/env",
             component: resolve => require(["@/page/env"], resolve),
         },
@@ -78,14 +101,6 @@ const router = new VueRouter({
             component: resolve => require(["@/page/Object.freeze"], resolve)
         },
         {
-            path: "/water",
-            component: resolve => require(["@/page/water"], resolve)
-        },
-        {
-            path: "/data-monitor",
-            component: resolve => require(["@/page/data-monitor"], resolve)
-        },
-        {
             path: '/404',
             component: resolve => require(['@/page/404'], resolve)
         },
@@ -99,15 +114,15 @@ const router = new VueRouter({
 
 // 全局前置守卫
 router.beforeEach((to, from, next) => {
-    console.log('全局前置守卫','to',to,'from', from, 'next', next);
+    console.log('全局前置守卫', 'to', to, 'from', from, 'next', next);
 
     // 移动端/PC端页面  ----  杭州利鹏ERP
     var viewport = document.getElementsByName('viewport')[0];
-    if(typeof viewport !== 'undefined'){
+    if (typeof viewport !== 'undefined') {
         viewport.parentElement.removeChild(viewport);
     }
-    let isMobile = false;
-    if(isMobile){
+    let isMobile = true;
+    if (isMobile) {
         var meta = document.createElement('meta');
         meta.name = 'viewport';
         meta.content = 'width=device-width,initial-scale=1.0,user-scalable=no';
@@ -137,7 +152,7 @@ router.beforeEach((to, from, next) => {
 
 // 全局后置钩子
 router.afterEach((to, from) => {
-    console.log('全局后置钩子','to',to,'from', from);
+    console.log('全局后置钩子', 'to', to, 'from', from);
 });
 
 export default router;

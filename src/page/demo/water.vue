@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  name: "water"
 }
 </script>
 
@@ -15,10 +14,11 @@ export default {
 .bg {
   width: 100%;
   height: 100%;
+  background-color: rgba(40, 134, 241, 0.925);
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(40, 134, 241, 0.925);
+  z-index: -1;
 }
 
 /* 初始一下水，大小，弯曲，阴影*/
