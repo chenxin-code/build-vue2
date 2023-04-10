@@ -63,6 +63,11 @@ module.exports = {
         })
       ]
     };
+    //less配置  有问题？？
+    // config.module.rules.push({
+    //   test: /\.less$/,
+    //   loader: "style-loader!css-loader!less-loader",
+    // });
   },
   /*
   会接收一个基于 webpack-chain 的 ChainableConfig 实例。允许对内部的 webpack 配置进行更细粒度的修改。
