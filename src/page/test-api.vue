@@ -9,6 +9,7 @@
 
 <script>
 import {baiduNews, taobaoSearchSuggest} from '@/api';
+import {debounce1, debounce2} from '@/toolFunc';
 
 export default {
   data() {
@@ -18,28 +19,32 @@ export default {
   },
   methods: {
     getBaiduNews() {
-      baiduNews({
-        methods: 'get',
-        url: 'widget',
-        params: {
-          id: 'LocalNews',
-          loc: 5496,
-          ajax: 'json',
-        },
-      }).then(resp => {
-        console.log('baiduNews', resp.data.data.LocalNews.data.rows);
+      debounce1(() => {
+        baiduNews({
+          methods: 'get',
+          url: 'widget',
+          params: {
+            id: 'LocalNews',
+            loc: 5496,
+            ajax: 'json',
+          },
+        }).then(resp => {
+          console.log('baiduNews', resp.data.data.LocalNews.data.rows);
+        });
       });
     },
     getTaobaoSearchSuggest() {
-      taobaoSearchSuggest({
-        methods: 'get',
-        url: 'sug',
-        params: {
-          code: 'utf-8',
-          q: this.query,
-        },
-      }).then(resp => {
-        console.log('taobaoSearchSuggest', resp.data.result);
+      debounce2(() => {
+        taobaoSearchSuggest({
+          methods: 'get',
+          url: 'sug',
+          params: {
+            code: 'utf-8',
+            q: this.query,
+          },
+        }).then(resp => {
+          console.log('taobaoSearchSuggest', resp.data.result);
+        });
       });
     }
   },

@@ -5,11 +5,13 @@
     <select v-model="justifyContent">
       <option :value="item" v-for="(item,index) in justifyContentList" :key="index">{{ item }}</option>
     </select>
+    （横轴方向上的对齐方式）
     <br/><br/>
     align-items:
     <select v-model="alignItems">
       <option :value="item" v-for="(item,index) in alignItemsList" :key="index">{{ item }}</option>
     </select>
+    （纵轴方向上的对齐方式）
     <br/><br/>
     <div class="box" :style="{ 'justify-content': justifyContent, 'align-items': alignItems }">
       <div style="background-color: orangered;"></div>
