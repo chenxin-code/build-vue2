@@ -13,6 +13,10 @@ const router = new VueRouter({
             redirect: '/test-api',
         },
         {
+            path: "/lodash",
+            component: resolve => require(["@/page/lodash"], resolve),
+        },
+        {
             path: "/brother-component",
             component: resolve => require(["@/page/brother-component"], resolve),
         },
