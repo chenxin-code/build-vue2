@@ -1,11 +1,13 @@
 <template>
   <div>
     <h1>深浅拷贝</h1>
-    <a href="https://blog.csdn.net/weixin_37719279/article/details/81240658" target="_blank">参考CSDN好文</a>
+    <a href="https://blog.csdn.net/weixin_37719279/article/details/81240658" target="_blank">参考CSDN</a>
   </div>
 </template>
 
 <script>
+import _ from 'lodash';
+
 export default {
   data() {
     return {
@@ -24,11 +26,6 @@ export default {
     }
   },
   methods: {
-    //赋值
-    assignment(iniObj) {
-      console.log('assignment');
-      return iniObj;
-    },
     //浅拷贝
     shallowClone(iniObj) {
       console.log('shallowClone');
@@ -59,18 +56,16 @@ export default {
       }
       return obj;
     },
-    //2个JSON方法实现深拷贝
-    json2(iniObj) {
-      console.log('json2');
-      return JSON.parse(JSON.stringify(iniObj));
-    },
   },
   mounted() {
-    // 分别测试4个方法
-    //this.obj2 = this.assignment(this.obj1);
+    // 分别测试以下方法
+    //this.obj2 = this.obj1; //赋值
     //this.obj2 = this.shallowClone(this.obj1);
-    this.obj2 = this.deepClone(this.obj1);
-    //this.obj2 = this.json2(this.obj1);
+    //this.obj2 = this.deepClone(this.obj1);
+    //this.obj2 = JSON.parse(JSON.stringify(this.obj1)); //2个JSON方法实现深拷贝
+    this.obj2 = _.cloneDeep(this.obj1);
+    //this.obj2 = structuredClone(this.obj1);
+
     console.log(this.obj1, this.obj2);
     console.log('----------------------------------');
     // 更改拷贝对象中的a,b,c,d，看看源对象是否变化
