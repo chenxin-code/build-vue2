@@ -1,9 +1,14 @@
 <template>
   <div>
-    <button @click="getBaiduNews()">百度新闻</button>
-    <hr/>
-    <input v-model="query">
-    <button @click="getTaobaoSearchSuggest()">淘宝搜索提示</button>
+    <el-tabs v-model="activeName" type="border-card">
+      <el-tab-pane label="百度新闻" name="百度新闻">
+        <el-button type="primary" @click="getBaiduNews()">get</el-button>
+      </el-tab-pane>
+      <el-tab-pane label="淘宝搜索提示" name="淘宝搜索提示">
+        <el-input v-model="query" placeholder="请输入内容" prefix-icon="el-icon-search" style="width: 300px;margin-right: 10px;" clearable />
+        <el-button type="primary" @click="getTaobaoSearchSuggest()">get</el-button>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
@@ -14,6 +19,7 @@ import {debounce1, debounce2} from '@/toolFunc';
 export default {
 	data() {
 		return {
+			activeName: '百度新闻',
 			query: '周杰伦'
 		};
 	},
@@ -56,8 +62,4 @@ export default {
 </script>
 
 <style scoped>
-button {
-  display: block;
-  margin-bottom: 5px;
-}
 </style>
