@@ -60,139 +60,139 @@
 
 <script>
 export default {
-  data() {
-    return {
-      //山丘之王
-      a: {
-        totalLife: 9833,//总生命值
-        curLife: 9833,//当前生命值
-        recover: 1.03,//回血速度(n秒/血)
-        attack: [59, 69],//攻击力[下限,上限]
-        speed: 1.59,//攻速(n秒/次)
-        armor: 0.71,//护甲(0~1)
-        skill: [15, 3],//被动技能[几率%,击晕n秒]
-      },
-      //剑圣
-      b: {
-        totalLife: 7258,//总生命值
-        curLife: 7258,//当前生命值
-        recover: 1.73,//回血速度(n秒/血)
-        attack: [66, 75],//攻击力[下限,上限]
-        speed: 1.13,//攻速(n秒/次)
-        armor: 0.86,//护甲(0~1)
-        skill: [15, 4],//被动技能[几率%,n倍暴击]
-      },
-      aAb: null,
-      bAa: null,
-      aRecoverInterval: null,
-      aDead: false,
-      bDead: false,
-      pking: false,
-      dizzing: false,//b被击晕提示
-      hiting: false,//b暴击提示
-      hitNum: 0,//b暴击伤害
-      mjzx: false,//a是否携带敏捷之靴
-      hxjz: false,//a是否携带回血戒指
-      gjzz: false,//b是否携带攻击之爪
-      fyjz: false,//b是否携带防御戒指
-    };
-  },
-  methods: {
-    pk() {
-      this.pking = true;
-      this.attack('a', 'b');
-      this.attack('b', 'a');
-    },
-    attack(from, to) {
-      if (from === 'a' && to === 'b') {
-        this.aAb = setInterval(() => {
-          //击晕
-          if (Math.ceil(Math.random() * 100) < this.a.skill[0]) {
-            clearTimeout(this.bash);
-            this.dizzing = true;
-            this.bash = setTimeout(() => {
-              this.dizzing = false;
-            }, this.a.skill[1] * 1000);
-          }
-          let temp = this.b.curLife - (this.getRandomNum(this.a.attack[0], this.a.attack[1]) * (this.b.armor / (this.fyjz ? 1.2 : 1))).toFixed(0);
-          this.b.curLife = temp < 0 ? 0 : temp;
-          if (this.b.curLife === 0) {
-            this.bDead = true;
-            this.pking = false;
-            clearInterval(this.aAb);
-            clearInterval(this.bAa);
-          }
-        }, this.a.speed * (this.mjzx ? 0.8 : 1) * 1000);
-      } else if (from === 'b' && to === 'a') {
-        this.bAa = setInterval(() => {
-          //击晕
-          if (this.dizzing) {
-            return;
-          }
-          let gjzz;
-          if (this.gjzz) {
-            gjzz = 12;
-          } else {
-            gjzz = 0;
-          }
-          let attack = this.getRandomNum(this.b.attack[0] + gjzz, this.b.attack[1] + gjzz);
-          //暴击
-          if (Math.ceil(Math.random() * 100) < this.b.skill[0]) {
-            attack = attack * this.b.skill[1];
-            this.hitNum = attack;
-            this.hiting = true;
-            setTimeout(() => {
-              this.hiting = false;
-            }, 1500);//暴击提示1.5秒
-          }
-          let temp = this.a.curLife - (attack * this.a.armor).toFixed(0);
-          this.a.curLife = temp < 0 ? 0 : temp;
-          if (this.a.curLife === 0) {
-            this.aDead = true;
-            this.pking = false;
-            clearInterval(this.aAb);
-            clearInterval(this.bAa);
-          }
-        }, this.b.speed * 1000);
-      }
-    },
-    aRecover() {
-      this.aRecoverInterval = setInterval(() => {
-        if (this.a.curLife > 0 && this.a.curLife < this.a.totalLife) {
-          this.a.curLife++;
-        }
-      }, this.a.recover * (this.hxjz ? 0.3333 : 1) * 1000);
-    },
-    bRecover() {
-      setInterval(() => {
-        if (this.b.curLife > 0 && this.b.curLife < this.b.totalLife) {
-          this.b.curLife++;
-        }
-      }, this.b.recover * 1000);
-    },
-    getRandomNum(m, n) {
-      return Math.floor((n + 1 - m) * Math.random() + m);
-    },
-  },
-  mounted() {
-    this.aRecover();
-    this.bRecover();
-  },
-  watch: {
-    mjzx() {
-      if (this.aAb && !this.aDead && !this.bDead) {
-        clearInterval(this.aAb);
-        this.attack('a', 'b');
-      }
-    },
-    hxjz() {
-      if (this.aRecoverInterval) {
-        clearInterval(this.aRecoverInterval);
-        this.aRecover();
-      }
-    },
-  },
-}
+	data() {
+		return {
+			//山丘之王
+			a: {
+				totalLife: 9833,//总生命值
+				curLife: 9833,//当前生命值
+				recover: 1.03,//回血速度(n秒/血)
+				attack: [59, 69],//攻击力[下限,上限]
+				speed: 1.59,//攻速(n秒/次)
+				armor: 0.71,//护甲(0~1)
+				skill: [15, 3],//被动技能[几率%,击晕n秒]
+			},
+			//剑圣
+			b: {
+				totalLife: 7258,//总生命值
+				curLife: 7258,//当前生命值
+				recover: 1.73,//回血速度(n秒/血)
+				attack: [66, 75],//攻击力[下限,上限]
+				speed: 1.13,//攻速(n秒/次)
+				armor: 0.86,//护甲(0~1)
+				skill: [15, 4],//被动技能[几率%,n倍暴击]
+			},
+			aAb: null,
+			bAa: null,
+			aRecoverInterval: null,
+			aDead: false,
+			bDead: false,
+			pking: false,
+			dizzing: false,//b被击晕提示
+			hiting: false,//b暴击提示
+			hitNum: 0,//b暴击伤害
+			mjzx: false,//a是否携带敏捷之靴
+			hxjz: false,//a是否携带回血戒指
+			gjzz: false,//b是否携带攻击之爪
+			fyjz: false,//b是否携带防御戒指
+		};
+	},
+	methods: {
+		pk() {
+			this.pking = true;
+			this.attack('a', 'b');
+			this.attack('b', 'a');
+		},
+		attack(from, to) {
+			if (from === 'a' && to === 'b') {
+				this.aAb = setInterval(() => {
+					//击晕
+					if (Math.ceil(Math.random() * 100) < this.a.skill[0]) {
+						clearTimeout(this.bash);
+						this.dizzing = true;
+						this.bash = setTimeout(() => {
+							this.dizzing = false;
+						}, this.a.skill[1] * 1000);
+					}
+					let temp = this.b.curLife - (this.getRandomNum(this.a.attack[0], this.a.attack[1]) * (this.b.armor / (this.fyjz ? 1.2 : 1))).toFixed(0);
+					this.b.curLife = temp < 0 ? 0 : temp;
+					if (this.b.curLife === 0) {
+						this.bDead = true;
+						this.pking = false;
+						clearInterval(this.aAb);
+						clearInterval(this.bAa);
+					}
+				}, this.a.speed * (this.mjzx ? 0.8 : 1) * 1000);
+			} else if (from === 'b' && to === 'a') {
+				this.bAa = setInterval(() => {
+					//击晕
+					if (this.dizzing) {
+						return;
+					}
+					let gjzz;
+					if (this.gjzz) {
+						gjzz = 12;
+					} else {
+						gjzz = 0;
+					}
+					let attack = this.getRandomNum(this.b.attack[0] + gjzz, this.b.attack[1] + gjzz);
+					//暴击
+					if (Math.ceil(Math.random() * 100) < this.b.skill[0]) {
+						attack = attack * this.b.skill[1];
+						this.hitNum = attack;
+						this.hiting = true;
+						setTimeout(() => {
+							this.hiting = false;
+						}, 1500);//暴击提示1.5秒
+					}
+					let temp = this.a.curLife - (attack * this.a.armor).toFixed(0);
+					this.a.curLife = temp < 0 ? 0 : temp;
+					if (this.a.curLife === 0) {
+						this.aDead = true;
+						this.pking = false;
+						clearInterval(this.aAb);
+						clearInterval(this.bAa);
+					}
+				}, this.b.speed * 1000);
+			}
+		},
+		aRecover() {
+			this.aRecoverInterval = setInterval(() => {
+				if (this.a.curLife > 0 && this.a.curLife < this.a.totalLife) {
+					this.a.curLife++;
+				}
+			}, this.a.recover * (this.hxjz ? 0.3333 : 1) * 1000);
+		},
+		bRecover() {
+			setInterval(() => {
+				if (this.b.curLife > 0 && this.b.curLife < this.b.totalLife) {
+					this.b.curLife++;
+				}
+			}, this.b.recover * 1000);
+		},
+		getRandomNum(m, n) {
+			return Math.floor((n + 1 - m) * Math.random() + m);
+		},
+	},
+	mounted() {
+		this.aRecover();
+		this.bRecover();
+	},
+	watch: {
+		mjzx() {
+			if (this.aAb && !this.aDead && !this.bDead) {
+				clearInterval(this.aAb);
+				this.attack('a', 'b');
+			}
+		},
+		hxjz() {
+			if (this.aRecoverInterval) {
+				clearInterval(this.aRecoverInterval);
+				this.aRecover();
+			}
+		},
+	},
+};
 </script>
 
 <style scoped>

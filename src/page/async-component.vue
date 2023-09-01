@@ -22,21 +22,21 @@
 const bigContent = () => import('@/component/big-content');// 异步组件
 
 export default {
-  components: {
-    bigContent,
-  },
-  data() {
-    return {
-      showBigContent: false,
-    }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.showBigContent = true;
-      console.log('虚拟DOM', this._vnode);
-    }, 3000);
-  },
-}
+	components: {
+		bigContent,
+	},
+	data() {
+		return {
+			showBigContent: false,
+		};
+	},
+	mounted() {
+		setTimeout(() => {
+			this.showBigContent = true;
+			console.log('虚拟DOM', this._vnode);
+		}, 3000);
+	},
+};
 </script>
 
 <style scoped>

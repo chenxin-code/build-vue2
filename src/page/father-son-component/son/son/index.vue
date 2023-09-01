@@ -7,9 +7,9 @@
 
 <script>
 export default {
-  props: ['money'],
-  inject: ['msg'],
-}
+	props: ['money'],
+	inject: ['msg'],
+};
 </script>
 
 <style scoped>

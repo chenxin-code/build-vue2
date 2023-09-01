@@ -24,29 +24,29 @@
 
 <script>
 export default {
-  data() {
-    return {
-      justifyContent: 'flex-start',//默认值
-      justifyContentList: [//可选值
-        'flex-start',
-        'flex-end',
-        'space-between',
-        'space-evenly',
-        'space-around',
-        'center',
-        'stretch',
-      ],
-      alignItems: 'flex-start',//默认值
-      alignItemsList: [//可选值
-        'flex-start',
-        'flex-end',
-        'center',
-        'stretch',
-        'baseline',
-      ],
-    }
-  },
-}
+	data() {
+		return {
+			justifyContent: 'flex-start',//默认值
+			justifyContentList: [//可选值
+				'flex-start',
+				'flex-end',
+				'space-between',
+				'space-evenly',
+				'space-around',
+				'center',
+				'stretch',
+			],
+			alignItems: 'flex-start',//默认值
+			alignItemsList: [//可选值
+				'flex-start',
+				'flex-end',
+				'center',
+				'stretch',
+				'baseline',
+			],
+		};
+	},
+};
 </script>
 
 <style scoped>

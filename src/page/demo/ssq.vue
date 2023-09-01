@@ -46,146 +46,146 @@
 
 <script>
 export default {
-  data() {
-    return {
-      zhushu: 5,
-      jixuanResult: [],
-      redBall: [
-        '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
-        '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-        '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
-        '31', '32', '33',
-      ],
-      blueBall: [
-        '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
-        '11', '12', '13', '14', '15', '16',
-      ],
-      //开奖
-      kj_red1: null,
-      kj_red2: null,
-      kj_red3: null,
-      kj_red4: null,
-      kj_red5: null,
-      kj_red6: null,
-      kj_blue: null,
-      //累计
-      leijiCost: 0,
-      leijiZhongjiang: 0,
-    };
-  },
-  methods: {
-    jixuan() {
-      let jixuanResult = [];
-      for (let i = 0; i < this.zhushu; i++) {
-        let red = this.bubbleSort(this.getRandomArrayValue(this.redBall, 6));
-        let blue = this.getRandomArrayValue(this.blueBall, 1);
-        let red_format = [];
-        let blue_format = [];
-        red.forEach(item => {
-          red_format.push({
-            num: item,
-            match: false,
-          });
-        });
-        blue.forEach(item => {
-          blue_format.push({
-            num: item,
-            match: false,
-          });
-        });
-        jixuanResult.push({
-          red_format: red_format,
-          blue_format: blue_format,
-          duijiang: 0,//兑奖金额
-        });
-      }
-      this.jixuanResult = jixuanResult;
-    },
-    kaijiang() {
-      let kj_redBall = this.bubbleSort(this.getRandomArrayValue(this.redBall, 6)),
-          kj_blueBall = this.getRandomArrayValue(this.blueBall, 1);
-      this.kj_red1 = kj_redBall[0];
-      this.kj_red2 = kj_redBall[1];
-      this.kj_red3 = kj_redBall[2];
-      this.kj_red4 = kj_redBall[3];
-      this.kj_red5 = kj_redBall[4];
-      this.kj_red6 = kj_redBall[5];
-      this.kj_blue = kj_blueBall[0];
-      //是否匹配，兑奖金额
-      this.jixuanResult.forEach(item1 => {
-        let redMatchNum = 0, blueMatchNum = 0;
-        item1.red_format.forEach(item2 => {
-          item2.match = !!kj_redBall.includes(item2.num);
-          if (item2.match) {
-            redMatchNum++;
-          }
-        });
-        item1.blue_format.forEach(item2 => {
-          item2.match = !!kj_blueBall.includes(item2.num);
-          if (item2.match) {
-            blueMatchNum++;
-          }
-        });
-        //根据官网中奖规则编写
-        if (blueMatchNum === 0) {
-          if (redMatchNum === 4) {
-            item1.duijiang = 10;
-          } else if (redMatchNum === 5) {
-            item1.duijiang = 200;
-          } else if (redMatchNum === 6) {
-            item1.duijiang = 50000;//二等奖
-          } else {
-            item1.duijiang = 0;
-          }
-        } else if (blueMatchNum === 1) {
-          if (redMatchNum === 0 || redMatchNum === 1 || redMatchNum === 2) {
-            item1.duijiang = 5;
-          } else if (redMatchNum === 3) {
-            item1.duijiang = 10;
-          } else if (redMatchNum === 4) {
-            item1.duijiang = 200;
-          } else if (redMatchNum === 5) {
-            item1.duijiang = 3000;
-          } else if (redMatchNum === 6) {
-            item1.duijiang = 5000000;//一等奖
-          } else {
-            item1.duijiang = 0;
-          }
-        } else {
-          item1.duijiang = 0;
-        }
-        this.leijiZhongjiang += item1.duijiang;
-      });
-      this.leijiCost += this.jixuanResult.length * 2;
-    },
-    getRandomArrayValue(arr, num) {
-      var sData = arr.slice(0), i = arr.length, min = i - num, item, index;
-      while (i-- > min) {
-        index = Math.floor((i + 1) * Math.random());
-        item = sData[index];
-        sData[index] = sData[i];
-        sData[i] = item;
-      }
-      return sData.slice(min);
-    },
-    //冒泡排序
-    bubbleSort(arr) {
-      for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length - 1 - i; j++) {
-          if (arr[j] > arr[j + 1]) {
-            let temp = arr[j + 1];
-            arr[j + 1] = arr[j];
-            arr[j] = temp;
-          }
-        }
-      }
-      return arr;
-    },
-  },
-  mounted() {
-  },
-  watch: {},
-}
+	data() {
+		return {
+			zhushu: 5,
+			jixuanResult: [],
+			redBall: [
+				'01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
+				'11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+				'21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
+				'31', '32', '33',
+			],
+			blueBall: [
+				'01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
+				'11', '12', '13', '14', '15', '16',
+			],
+			//开奖
+			kj_red1: null,
+			kj_red2: null,
+			kj_red3: null,
+			kj_red4: null,
+			kj_red5: null,
+			kj_red6: null,
+			kj_blue: null,
+			//累计
+			leijiCost: 0,
+			leijiZhongjiang: 0,
+		};
+	},
+	methods: {
+		jixuan() {
+			let jixuanResult = [];
+			for (let i = 0; i < this.zhushu; i++) {
+				let red = this.bubbleSort(this.getRandomArrayValue(this.redBall, 6));
+				let blue = this.getRandomArrayValue(this.blueBall, 1);
+				let red_format = [];
+				let blue_format = [];
+				red.forEach(item => {
+					red_format.push({
+						num: item,
+						match: false,
+					});
+				});
+				blue.forEach(item => {
+					blue_format.push({
+						num: item,
+						match: false,
+					});
+				});
+				jixuanResult.push({
+					red_format: red_format,
+					blue_format: blue_format,
+					duijiang: 0,//兑奖金额
+				});
+			}
+			this.jixuanResult = jixuanResult;
+		},
+		kaijiang() {
+			let kj_redBall = this.bubbleSort(this.getRandomArrayValue(this.redBall, 6)),
+				kj_blueBall = this.getRandomArrayValue(this.blueBall, 1);
+			this.kj_red1 = kj_redBall[0];
+			this.kj_red2 = kj_redBall[1];
+			this.kj_red3 = kj_redBall[2];
+			this.kj_red4 = kj_redBall[3];
+			this.kj_red5 = kj_redBall[4];
+			this.kj_red6 = kj_redBall[5];
+			this.kj_blue = kj_blueBall[0];
+			//是否匹配，兑奖金额
+			this.jixuanResult.forEach(item1 => {
+				let redMatchNum = 0, blueMatchNum = 0;
+				item1.red_format.forEach(item2 => {
+					item2.match = !!kj_redBall.includes(item2.num);
+					if (item2.match) {
+						redMatchNum++;
+					}
+				});
+				item1.blue_format.forEach(item2 => {
+					item2.match = !!kj_blueBall.includes(item2.num);
+					if (item2.match) {
+						blueMatchNum++;
+					}
+				});
+				//根据官网中奖规则编写
+				if (blueMatchNum === 0) {
+					if (redMatchNum === 4) {
+						item1.duijiang = 10;
+					} else if (redMatchNum === 5) {
+						item1.duijiang = 200;
+					} else if (redMatchNum === 6) {
+						item1.duijiang = 50000;//二等奖
+					} else {
+						item1.duijiang = 0;
+					}
+				} else if (blueMatchNum === 1) {
+					if (redMatchNum === 0 || redMatchNum === 1 || redMatchNum === 2) {
+						item1.duijiang = 5;
+					} else if (redMatchNum === 3) {
+						item1.duijiang = 10;
+					} else if (redMatchNum === 4) {
+						item1.duijiang = 200;
+					} else if (redMatchNum === 5) {
+						item1.duijiang = 3000;
+					} else if (redMatchNum === 6) {
+						item1.duijiang = 5000000;//一等奖
+					} else {
+						item1.duijiang = 0;
+					}
+				} else {
+					item1.duijiang = 0;
+				}
+				this.leijiZhongjiang += item1.duijiang;
+			});
+			this.leijiCost += this.jixuanResult.length * 2;
+		},
+		getRandomArrayValue(arr, num) {
+			var sData = arr.slice(0), i = arr.length, min = i - num, item, index;
+			while (i-- > min) {
+				index = Math.floor((i + 1) * Math.random());
+				item = sData[index];
+				sData[index] = sData[i];
+				sData[i] = item;
+			}
+			return sData.slice(min);
+		},
+		//冒泡排序
+		bubbleSort(arr) {
+			for (let i = 0; i < arr.length; i++) {
+				for (let j = 0; j < arr.length - 1 - i; j++) {
+					if (arr[j] > arr[j + 1]) {
+						let temp = arr[j + 1];
+						arr[j + 1] = arr[j];
+						arr[j] = temp;
+					}
+				}
+			}
+			return arr;
+		},
+	},
+	mounted() {
+	},
+	watch: {},
+};
 </script>
 
 <style scoped>

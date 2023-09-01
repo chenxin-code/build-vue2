@@ -1,12 +1,12 @@
 <template>
   <div>
     <p>404</p>
-    <img src="@/img/boy.jpg" alt="" />
+    <img src="./../img/boy.jpg" alt="" />
   </div>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

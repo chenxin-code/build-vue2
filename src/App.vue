@@ -10,11 +10,11 @@
 
 <script>
 export default {
-  mounted() {
-    console.log('根组件', this.$route.meta.keepAlive);
-    console.log('虚拟DOM', this._vnode);
-  },
-}
+	mounted() {
+		console.log('根组件', this.$route.meta.keepAlive);
+		console.log('虚拟DOM', this._vnode);
+	},
+};
 </script>
 
 <style>
