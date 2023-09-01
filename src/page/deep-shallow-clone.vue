@@ -63,8 +63,9 @@ export default {
 		//this.obj2 = this.shallowClone(this.obj1);
 		//this.obj2 = this.deepClone(this.obj1);
 		//this.obj2 = JSON.parse(JSON.stringify(this.obj1)); //2个JSON方法实现深拷贝
-		this.obj2 = _.cloneDeep(this.obj1);
-		//this.obj2 = structuredClone(this.obj1);
+    //this.obj2 = _.clone(this.obj1); //浅拷贝
+    this.obj2 = _.cloneDeep(this.obj1); //深拷贝
+		//this.obj2 = structuredClone(this.obj1); //深拷贝
 
 		console.log(this.obj1, this.obj2);
 		console.log('----------------------------------');
