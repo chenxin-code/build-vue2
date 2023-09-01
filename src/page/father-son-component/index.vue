@@ -15,26 +15,26 @@
 import son from './son';
 
 export default {
-  components: {son},
-  data() {
-    return {
-      money: 100,
-    }
-  },
-  provide() {
-    //非响应式
-    return {
-      msg: 'xxxxxx',
-    }
-  },
-  methods: {
-    moneyMinus1() {
-      this.money--;
-    },
-  },
-  mounted() {
-  },
-}
+	components: {son},
+	data() {
+		return {
+			money: 100,
+		};
+	},
+	provide() {
+		//非响应式
+		return {
+			msg: 'xxxxxx',
+		};
+	},
+	methods: {
+		moneyMinus1() {
+			this.money--;
+		},
+	},
+	mounted() {
+	},
+};
 </script>
 
 <style scoped>

@@ -21,14 +21,14 @@ import brother3 from './brother3';
 import brotherA from './brotherA';
 import brotherB from './brotherB';
 export default {
-  components:{
-    brother1,
-    brother2,
-    brother3,
-    brotherA,
-    brotherB,
-  }
-}
+	components:{
+		brother1,
+		brother2,
+		brother3,
+		brotherA,
+		brotherB,
+	}
+};
 </script>
 
 <style scoped>

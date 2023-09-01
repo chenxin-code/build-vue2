@@ -1,6 +1,7 @@
 module.exports = {
 	'env': {
-		'browser': true
+		'browser': true,
+		'node': true
 	},
 	'extends': [
 		'eslint:recommended',
@@ -20,8 +21,9 @@ module.exports = {
 		}
 	],
 	'parserOptions': {
-		'ecmaVersion': 'latest',
-		'sourceType': 'module'
+		//'ecmaVersion': 'latest',
+		'sourceType': 'module',
+		allowImportExportEverywhere: true // 不限制eslint对import使用位置
 	},
 	'plugins': [
 		'vue'
@@ -42,6 +44,8 @@ module.exports = {
 		'semi': [
 			'error',
 			'always'
-		]
+		],
+		// 关闭名称校验
+		'vue/multi-word-component-names': 'off'
 	}
 };

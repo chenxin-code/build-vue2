@@ -13,25 +13,25 @@
 import eventBus from '@/eventBus';
 
 export default {
-  data() {
-    return {
-      food: '西瓜',
-    };
-  },
-  methods: {
-    changeFood(e) {
-      this.food = e.target.value;
-      console.log('B $emit');
-      eventBus.$emit('Bchange', e.target.value);
-    },
-  },
-  mounted() {
-    eventBus.$on('Achange', (value) => {
-      console.log('B $on');
-      this.food = value;
-    });
-  },
-}
+	data() {
+		return {
+			food: '西瓜',
+		};
+	},
+	methods: {
+		changeFood(e) {
+			this.food = e.target.value;
+			console.log('B $emit');
+			eventBus.$emit('Bchange', e.target.value);
+		},
+	},
+	mounted() {
+		eventBus.$on('Achange', (value) => {
+			console.log('B $on');
+			this.food = value;
+		});
+	},
+};
 </script>
 
 <style scoped>

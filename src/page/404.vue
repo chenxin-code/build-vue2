@@ -1,7 +1,6 @@
 <template>
   <div>
     <p>404</p>
-    <img src="./../img/boy.jpg" alt="" />
   </div>
 </template>
 

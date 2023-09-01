@@ -13,7 +13,7 @@ export default {
 	mounted() {
 		// forEach 遍历数组 没有返回值
 		//let newArr1 =
-        this.arr.forEach((item, index) => {
+		this.arr.forEach((item, index) => {
 			console.log(index, item);
 		});//编辑器黄色警告
 		//console.log('forEach返回', newArr1);

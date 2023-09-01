@@ -10,24 +10,24 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {mapState} from 'vuex';
 
 export default {
-  data() {
-    return {}
-  },
-  computed: {
-    ...mapState(['year'])
-  },
-  methods: {
-    changeYear(e) {
-      // commit 调用 mutations
-      this.$store.commit('changeYear', e.target.value);
-      // dispatch 调用 actions
-      //this.$store.dispatch('changeYear', e.target.value);
-    },
-  },
-}
+	data() {
+		return {};
+	},
+	computed: {
+		...mapState(['year'])
+	},
+	methods: {
+		changeYear(e) {
+			// commit 调用 mutations
+			this.$store.commit('changeYear', e.target.value);
+			// dispatch 调用 actions
+			//this.$store.dispatch('changeYear', e.target.value);
+		},
+	},
+};
 </script>
 
 <style scoped>

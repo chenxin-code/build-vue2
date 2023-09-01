@@ -14,15 +14,15 @@
 import son from './son';
 
 export default {
-  props: ['money'],
-  inject: ['msg'],
-  components: {son},
-  methods: {
-    moneyPlus1() {
-      this.$parent.money++;
-    },
-  },
-}
+	props: ['money'],
+	inject: ['msg'],
+	components: {son},
+	methods: {
+		moneyPlus1() {
+			this.$parent.money++;
+		},
+	},
+};
 </script>
 
 <style scoped>
