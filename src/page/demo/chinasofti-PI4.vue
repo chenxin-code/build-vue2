@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <el-divider>中软PI4版本批量创建计划</el-divider>
+  <div style="padding: 15px 0;">
     <div class="row">
       <div class="col">固定8种</div>
       <div class="col">选择时间</div>
@@ -9,17 +8,17 @@
     <div class="row" v-for="(item1,index1) in rowData" :key="index1">
       <div class="col">{{item1.rowName}}</div>
       <div class="col">
-        <el-radio-group v-model="item1.radio">
-          <el-radio :label="1">时间1</el-radio>
-          <el-radio :label="2">时间2</el-radio>
-          <el-radio :label="3">时间3</el-radio>
+        <el-radio-group v-model="item1.time">
+          <el-radio :label="1">每月</el-radio>
+          <el-radio :label="2">每季</el-radio>
+          <el-radio :label="3">每年</el-radio>
         </el-radio-group>
       </div>
       <div class="col" v-for="(item2,index2) in item1.colData" :key="index2">
-        <el-input v-model="item2.input" placeholder="请输入产品线"></el-input>
+        <el-input v-model="item2.content" placeholder="请输入内容" clearable />
       </div>
     </div>
-    <el-button type="primary" @click="submit()">批量创建</el-button>
+    <el-button type="primary" icon="el-icon-plus" @click="submit()">批量创建</el-button>
   </div>
 </template>
 
@@ -38,12 +37,12 @@ export default {
 			let arr = [];
 			this.rowData.forEach(item1 => {
 				item1.colData.forEach(item2 => {
-					if(item2.input){
+					if(item2.content){
 						arr.push({
 							rowName: item1.rowName,
-							radio: item1.radio,
+							time: item1.time,
 							colName: item2.colName,
-							input: item2.input,
+							content: item2.content,
 						});
 					}
 				});
@@ -53,19 +52,19 @@ export default {
 	},
 	mounted() {
 		//动态的产品线接口返回
-		this.lineData = ['产品线1', '产品线2', '产品线3', '产品线4'];
+		this.lineData = ['产品线1', '产品线2', '产品线3', '产品线4', '产品线5'];
 		let colData = [];
 		this.lineData.forEach(item=>{
 			colData.push({
 				colName: item,
-				input: null,
+				content: null,
 			});
 		});
 		//固定8种
 		['A','B','C','D','E','F','G','H'].forEach(item=>{
 			this.rowData.push({
 				rowName: item,
-				radio: 1,
+				time: 1,
 				colData: _.cloneDeep(colData),//必须使用深拷贝
 			});
 		});
@@ -75,12 +74,13 @@ export default {
 
 <style lang="less" scoped>
 .row {
+  margin: 3px 0;
   display: flex;
   .col {
     flex: 1;
     margin: 3px 8px;
     padding: 2px 5px;
-    background-color: #A1A3B1;
+    background-color: #f1f1f1;
     border-radius: 5px;
     text-align: center;
   }
