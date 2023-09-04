@@ -6,7 +6,10 @@
 </template>
 
 <script>
-import _ from 'lodash';
+import {
+	//shallowClone,
+	deepClone} from '@/toolFunc';
+//import _ from 'lodash';
 
 export default {
 	data() {
@@ -25,46 +28,15 @@ export default {
 			obj2: null,
 		};
 	},
-	methods: {
-		//浅拷贝
-		shallowClone(iniObj) {
-			console.log('shallowClone');
-			var obj = {};
-			for (var i in iniObj) {
-				obj[i] = iniObj[i];
-			}
-			return obj;
-		},
-		//深拷贝
-		deepClone(iniObj, finalObj, first = true) {
-			if (first) {
-				console.log('deepClone');
-			}
-			var obj = finalObj || {};
-			for (var i in iniObj) {
-				var prop = iniObj[i];
-				// 避免相互引用对象导致死循环，如iniObj.a = iniObj的情况
-				if (prop === obj) {
-					continue;
-				}
-				if (typeof prop === 'object') {
-					obj[i] = (prop.constructor === Array) ? [] : {};
-					this.deepClone(prop, obj[i], false);
-				} else {
-					obj[i] = prop;
-				}
-			}
-			return obj;
-		},
-	},
+	methods: {},
 	mounted() {
 		// 分别测试以下方法
 		//this.obj2 = this.obj1; //赋值
-		//this.obj2 = this.shallowClone(this.obj1);
-		//this.obj2 = this.deepClone(this.obj1);
+		//this.obj2 = shallowClone(this.obj1);
+		this.obj2 = deepClone(this.obj1);
 		//this.obj2 = JSON.parse(JSON.stringify(this.obj1)); //2个JSON方法实现深拷贝
 		//this.obj2 = _.clone(this.obj1); //浅拷贝
-		this.obj2 = _.cloneDeep(this.obj1); //深拷贝
+		//this.obj2 = _.cloneDeep(this.obj1); //深拷贝
 		//this.obj2 = structuredClone(this.obj1); //深拷贝
 
 		console.log(this.obj1, this.obj2);

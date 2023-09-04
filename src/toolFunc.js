@@ -27,3 +27,35 @@ export const debounce2 = function (action, delay = 200) {
 
 	return delayBounces();
 };
+
+//浅拷贝
+export function shallowClone(iniObj) {
+	console.log('shallowClone');
+	var obj = {};
+	for (var i in iniObj) {
+		obj[i] = iniObj[i];
+	}
+	return obj;
+}
+
+//深拷贝
+export function deepClone(iniObj, finalObj, first = true) {
+	if (first) {
+		console.log('deepClone');
+	}
+	var obj = finalObj || {};
+	for (var i in iniObj) {
+		var prop = iniObj[i];
+		// 避免相互引用对象导致死循环，如iniObj.a = iniObj的情况
+		if (prop === obj) {
+			continue;
+		}
+		if (typeof prop === 'object') {
+			obj[i] = (prop.constructor === Array) ? [] : {};
+			deepClone(prop, obj[i], false);
+		} else {
+			obj[i] = prop;
+		}
+	}
+	return obj;
+}
