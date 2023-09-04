@@ -5,6 +5,7 @@
     <button @click="$router.push({ path: '/demo/data-monitor' });">数据监控</button>
     <button @click="$router.push({ path: '/demo/pk' });">魔兽英雄PK</button>
     <button @click="$router.push({ path: '/demo/ssq' });">模拟双色球</button>
+    <button @click="$router.push({ path: '/demo/chinasofti-PI4' });">中软PI4版本批量创建计划</button>
     <router-view></router-view>
   </div>
 </template>

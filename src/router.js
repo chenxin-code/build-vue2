@@ -93,6 +93,10 @@ const router = new VueRouter({
 					path: 'ssq',
 					component: resolve => require(['@/page/demo/ssq'], resolve),
 				},
+				{
+					path: 'chinasofti-PI4',
+					component: resolve => require(['@/page/demo/chinasofti-PI4'], resolve),
+				},
 			],
 		},
 		{
