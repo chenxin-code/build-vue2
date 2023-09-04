@@ -1,5 +1,6 @@
 <template>
   <div>
+    <el-divider>中软PI4版本批量创建计划</el-divider>
     <div class="row">
       <div class="col">固定8种</div>
       <div class="col">选择时间</div>
@@ -9,21 +10,22 @@
       <div class="col">{{item1.rowName}}</div>
       <div class="col">
         <el-radio-group v-model="item1.radio">
-          <el-radio :label="1">选项1</el-radio>
-          <el-radio :label="2">选项2</el-radio>
-          <el-radio :label="3">选项3</el-radio>
+          <el-radio :label="1">时间1</el-radio>
+          <el-radio :label="2">时间2</el-radio>
+          <el-radio :label="3">时间3</el-radio>
         </el-radio-group>
       </div>
       <div class="col" v-for="(item2,index2) in item1.colData" :key="index2">
         <el-input v-model="item2.input" placeholder="请输入产品线"></el-input>
       </div>
     </div>
-    <el-button @click="submit()">提交</el-button>
+    <el-button type="primary" @click="submit()">批量创建</el-button>
   </div>
 </template>
 
 <script>
-// 中软PI4版本批量创建计划
+import _ from 'lodash';
+
 export default {
 	data() {
 		return {
@@ -64,7 +66,7 @@ export default {
 			this.rowData.push({
 				rowName: item,
 				radio: 1,
-				colData: colData,
+				colData: _.cloneDeep(colData),//必须使用深拷贝
 			});
 		});
 	}
