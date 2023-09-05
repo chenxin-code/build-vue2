@@ -1,8 +1,8 @@
 <template>
   <div style="padding: 15px 0;">
     <div class="row">
-      <div class="col">固定8种</div>
-      <div class="col">选择时间</div>
+      <div class="col">字母</div>
+      <div class="col">时间</div>
       <div class="col" v-for="(item,index) in lineData" :key="index">{{item}}</div>
     </div>
     <div class="row" v-for="(item1,index1) in rowData" :key="index1">
@@ -51,7 +51,7 @@ export default {
 		}
 	},
 	mounted() {
-		//动态的产品线接口返回
+		//动态产品线
 		this.lineData = ['产品线1', '产品线2', '产品线3', '产品线4', '产品线5'];
 		let colData = [];
 		this.lineData.forEach(item=>{
@@ -60,7 +60,7 @@ export default {
 				content: null,
 			});
 		});
-		//固定8种
+		//动态字母
 		['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach(item=>{
 			this.rowData.push({
 				rowName: item,
