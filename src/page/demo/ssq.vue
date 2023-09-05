@@ -96,7 +96,7 @@ export default {
 				jixuanResult.push({
 					red_format: red_format,
 					blue_format: blue_format,
-					duijiang: 0,//兑奖金额
+					duijiang: 0, //兑奖金额
 				});
 			}
 			this.jixuanResult = jixuanResult;

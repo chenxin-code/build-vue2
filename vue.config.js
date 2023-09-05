@@ -13,11 +13,11 @@ let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	//当运行 vue-cli-service build 时生成的生产环境构建文件的目录。
-	outputDir: 'dist',//默认 dist
+	outputDir: 'dist', //默认 dist
 	//生成的静态资源在它们的文件名中包含了 hash 以便更好的控制缓存。
-	filenameHashing: true,//默认 true
+	filenameHashing: true, //默认 true
 	//单页面不配置  多页面才配置
-	pages: undefined,//默认 undefined
+	pages: undefined, //默认 undefined
 	/*
   调整 webpack 配置最简单的方式就是在 vue.config.js 中的 configureWebpack 选项提供一个对象，
   该对象将会被 webpack-merge 合并入最终的 webpack 配置。
@@ -89,24 +89,24 @@ module.exports = {
   https://webpack.docschina.org/configuration/dev-server/#devserver
   */
 	devServer: {
-		port: 666,// 项目运行的端口号
+		port: 666, // 项目运行的端口号
 		open: true, // 是否自动打开浏览器页面
 		// 前端node代理 解决跨域 配置此项
 		proxy: {
 			// 标识位：拦截以/baiduNews/开头的请求路径
 			'/baiduNews/': {
-				target: 'https://news.baidu.com',// 域名 端口号
+				target: 'https://news.baidu.com', // 域名 端口号
 				pathRewrite: {
-					'^/baiduNews/': '',// 干掉标识位
+					'^/baiduNews/': '', // 干掉标识位
 				},
 				changeOrigin: true, // 是否开启跨域
 				ws: true // 是否开启websocket
 			},
 			// 标识位：拦截以/taobaoSearchSuggest/开头的请求路径
 			'/taobaoSearchSuggest/': {
-				target: 'https://suggest.taobao.com',// 域名 端口号
+				target: 'https://suggest.taobao.com', // 域名 端口号
 				pathRewrite: {
-					'^/taobaoSearchSuggest/': '',// 干掉标识位
+					'^/taobaoSearchSuggest/': '', // 干掉标识位
 				},
 				changeOrigin: true, // 是否开启跨域
 				ws: true // 是否开启websocket

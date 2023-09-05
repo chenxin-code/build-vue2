@@ -6,10 +6,8 @@
 </template>
 
 <script>
-import {
-	//shallowClone,
-	deepClone} from '@/toolFunc';
-//import _ from 'lodash';
+import {shallowClone, deepClone} from '@/toolFunc';
+import _ from 'lodash';
 
 export default {
 	data() {

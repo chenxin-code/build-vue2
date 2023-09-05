@@ -61,11 +61,11 @@ export default {
 			});
 		});
 		//固定8种
-		['A','B','C','D','E','F','G','H'].forEach(item=>{
+		['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach(item=>{
 			this.rowData.push({
 				rowName: item,
 				time: 1,
-				colData: _.cloneDeep(colData),//必须使用深拷贝
+				colData: _.cloneDeep(colData), //必须使用深拷贝
 			});
 		});
 	}

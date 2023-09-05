@@ -64,23 +64,23 @@ export default {
 		return {
 			//山丘之王
 			a: {
-				totalLife: 9833,//总生命值
-				curLife: 9833,//当前生命值
-				recover: 1.03,//回血速度(n秒/血)
-				attack: [59, 69],//攻击力[下限,上限]
-				speed: 1.59,//攻速(n秒/次)
-				armor: 0.71,//护甲(0~1)
-				skill: [15, 3],//被动技能[几率%,击晕n秒]
+				totalLife: 9833, //总生命值
+				curLife: 9833, //当前生命值
+				recover: 1.03, //回血速度(n秒/血)
+				attack: [59, 69], //攻击力[下限,上限]
+				speed: 1.59, //攻速(n秒/次)
+				armor: 0.71, //护甲(0~1)
+				skill: [15, 3], //被动技能[几率%,击晕n秒]
 			},
 			//剑圣
 			b: {
-				totalLife: 7258,//总生命值
-				curLife: 7258,//当前生命值
-				recover: 1.73,//回血速度(n秒/血)
-				attack: [66, 75],//攻击力[下限,上限]
-				speed: 1.13,//攻速(n秒/次)
-				armor: 0.86,//护甲(0~1)
-				skill: [15, 4],//被动技能[几率%,n倍暴击]
+				totalLife: 7258, //总生命值
+				curLife: 7258, //当前生命值
+				recover: 1.73, //回血速度(n秒/血)
+				attack: [66, 75], //攻击力[下限,上限]
+				speed: 1.13, //攻速(n秒/次)
+				armor: 0.86, //护甲(0~1)
+				skill: [15, 4], //被动技能[几率%,n倍暴击]
 			},
 			aAb: null,
 			bAa: null,
@@ -88,13 +88,13 @@ export default {
 			aDead: false,
 			bDead: false,
 			pking: false,
-			dizzing: false,//b被击晕提示
-			hiting: false,//b暴击提示
-			hitNum: 0,//b暴击伤害
-			mjzx: false,//a是否携带敏捷之靴
-			hxjz: false,//a是否携带回血戒指
-			gjzz: false,//b是否携带攻击之爪
-			fyjz: false,//b是否携带防御戒指
+			dizzing: false, //b被击晕提示
+			hiting: false, //b暴击提示
+			hitNum: 0, //b暴击伤害
+			mjzx: false, //a是否携带敏捷之靴
+			hxjz: false, //a是否携带回血戒指
+			gjzz: false, //b是否携带攻击之爪
+			fyjz: false, //b是否携带防御戒指
 		};
 	},
 	methods: {
