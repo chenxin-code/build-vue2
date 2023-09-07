@@ -12,8 +12,9 @@ vue.config.js 是一个可选的配置文件，如果项目的 (和 package.json
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+	publicPath: '', //默认 '/'
 	//当运行 vue-cli-service build 时生成的生产环境构建文件的目录。
-	outputDir: 'dist', //默认 dist
+	outputDir: 'dist', //默认 'dist'
 	//生成的静态资源在它们的文件名中包含了 hash 以便更好的控制缓存。
 	filenameHashing: true, //默认 true
 	//单页面不配置  多页面才配置
