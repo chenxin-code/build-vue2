@@ -1,16 +1,20 @@
 <template>
   <div style="padding: 15px 0;">
-    <el-button type="success" icon="el-icon-download" @click="exportExcel()" />
-    <el-link type="warning" icon="el-icon-document" href="https://blog.csdn.net/weixin_42232622/article/details/127834241" target="_blank">参考CSDN</el-link>
+    <el-button type="success" icon="el-icon-download" @click="exportExcel()"/>
+    <el-link type="warning" icon="el-icon-document"
+             href="https://blog.csdn.net/weixin_42232622/article/details/127834241" target="_blank">参考CSDN
+    </el-link>
   </div>
 </template>
 
 <script>
-const XLSX = require('xlsx');  //使用import有的属性无法找到
+//import XLSX from 'xlsx';//使用import有的属性无法找到
+const XLSX = require('xlsx');
+
 export default {
 	data() {
 		return {
-			excelData:[
+			excelData: [
 				['第1列', '第2列', '第3列'],
 				['a', 'b', 'c'],
 				['d', 'e', 'f'],
