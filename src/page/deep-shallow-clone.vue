@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>深浅拷贝</h1>
-    <a href="https://blog.csdn.net/weixin_37719279/article/details/81240658" target="_blank">参考CSDN</a>
+    <el-link type="warning" icon="el-icon-document" href="https://blog.csdn.net/weixin_37719279/article/details/81240658" target="_blank">参考CSDN</el-link>
   </div>
 </template>
 

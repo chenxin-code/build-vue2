@@ -97,6 +97,10 @@ const router = new VueRouter({
 					path: 'chinasofti-PI4',
 					component: resolve => require(['@/page/demo/chinasofti-PI4'], resolve),
 				},
+				{
+					path: 'exportExcel',
+					component: resolve => require(['@/page/demo/exportExcel'], resolve),
+				},
 			],
 		},
 		{
