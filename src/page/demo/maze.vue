@@ -93,6 +93,7 @@ export default {
 					if (this.isRange(newX, newY) && !this.visited[newX][newY]) {
 						yield;
 						this.basicMap[(newX + curPos.x) / 2][(newY + curPos.y) / 2] = 1;
+						this.$forceUpdate();//必须强制更新
 						if (Math.random() > 0.5) {
 							stack.push({x: newX, y: newY});
 						} else {
@@ -145,6 +146,7 @@ export default {
 		timeOutRender(x, y, t) {
 			setTimeout(() => {
 				this.basicMap[x][y] = t;
+				this.$forceUpdate();//必须强制更新
 				this.renderMap();
 			}, this.answerStep++ * 30);
 		},
