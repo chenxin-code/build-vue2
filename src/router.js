@@ -101,6 +101,10 @@ const router = new VueRouter({
 					path: 'exportExcel',
 					component: resolve => require(['@/page/demo/exportExcel'], resolve),
 				},
+				{
+					path: 'maze',
+					component: resolve => require(['@/page/demo/maze'], resolve),
+				},
 			],
 		},
 		{
