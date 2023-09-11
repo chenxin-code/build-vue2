@@ -1,12 +1,7 @@
 <template>
-  <div>
-    <el-link type="warning" icon="el-icon-document"
-             href="https://blog.csdn.net/weixin_43840202/article/details/117398825" target="_blank">参考CSDN
-    </el-link>
-    <div id="map" :style="{ 'height': 30 * basicMap.length + 'px', 'width': basicMap[0]?30 * basicMap[0].length + 'px':'auto' }">
-      <div class="line" v-for="(item1,index1) in basicMap" :key="index1">
-        <div :class="[className[item2]]" v-for="(item2,index2) in item1" :key="index2"></div>
-      </div>
+  <div id="map" :style="{ 'height': 30 * basicMap.length + 'px', 'width': basicMap[0]?30 * basicMap[0].length + 'px':'auto' }">
+    <div class="line" v-for="(item1,index1) in basicMap" :key="index1">
+      <div :class="[className[item2]]" v-for="(item2,index2) in item1" :key="index2"></div>
     </div>
   </div>
 </template>
@@ -89,7 +84,7 @@ export default {
 				clearInterval(t);
 			}
 		}, 10);
-	}
+	},
 };
 </script>
 

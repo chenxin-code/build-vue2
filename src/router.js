@@ -103,7 +103,18 @@ const router = new VueRouter({
 				},
 				{
 					path: 'maze',
-					component: resolve => require(['@/page/demo/maze'], resolve),
+					component: resolve => require(['@/page/demo/maze/index'], resolve),
+					//嵌套路由
+					children: [
+						{
+							path: '1',
+							component: resolve => require(['@/page/demo/maze/1'], resolve),
+						},
+						{
+							path: '2',
+							component: resolve => require(['@/page/demo/maze/2'], resolve),
+						},
+					],
 				},
 			],
 		},
