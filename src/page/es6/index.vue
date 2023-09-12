@@ -1,8 +1,15 @@
 <template>
   <div>
-    <h2>玩转es6</h2>
-    <button @click="$router.push({ path: '/es6/forin-forof-foreach' });">forin-forof-foreach</button>
-    <button @click="$router.push({ path: '/es6/map-filter-foreach' });">map-filter-foreach</button>
+    <el-divider>玩转es6</el-divider>
+    <el-button-group>
+      <el-button :type="$route.path === '/es6/' + item.path ? 'primary' : ''"
+                 @click="$router.push({ path: '/es6/' + item.path });"
+                 :disabled="$route.path === '/es6/' + item.path"
+                 size="medium"
+                 v-for="(item,index) in es6Index" :key="index">
+        {{ item.title }}
+      </el-button>
+    </el-button-group>
     <router-view></router-view>
   </div>
 </template>
@@ -10,7 +17,12 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			es6Index: [
+				{title: 'forin-forof-foreach', path: 'forin-forof-foreach'},
+				{title: 'map-filter-foreach', path: 'map-filter-foreach'},
+			],
+		};
 	},
 	methods: {},
 	mounted() {
@@ -19,8 +31,4 @@ export default {
 </script>
 
 <style scoped>
-button {
-  display: block;
-  margin-bottom: 5px;
-}
 </style>

@@ -21,5 +21,6 @@ export default {
 button {
   display: block;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 </style>
