@@ -1,5 +1,6 @@
 <template>
-  <div id="map" :style="{ 'height': 30 * basicMap.length + 'px', 'width': basicMap[0]?30 * basicMap[0].length + 'px':'auto' }">
+  <div id="map"
+       :style="{ 'height': 30 * basicMap.length + 'px', 'width': basicMap[0]?30 * basicMap[0].length + 'px':'auto' }">
     <div class="line" v-for="(item1,index1) in basicMap" :key="index1">
       <div :class="[className[item2]]" v-for="(item2,index2) in item1" :key="index2"></div>
     </div>
@@ -8,20 +9,19 @@
 
 <script>
 import mazeCommon from '@/mixins/maze-common';
+
 export default {
 	mixins: [mazeCommon],
 	data() {
 		return {
-			prePath:[], // 上一次访问数据
+			prePath: [], // 上一次访问数据
 		};
 	},
 	methods: {
-		/*非递归、栈、深度优先*/
-
 		/**
      * 求解
      */
-		* getMazePath(x, y){
+		* getMazePath(x, y) {
 			let stack = [];
 			stack.unshift({x, y}); // 入栈
 			while (stack.length > 0) {
@@ -38,7 +38,7 @@ export default {
 					this.$forceUpdate();//必须强制更新
 					this.renderMap();
 					let prePos = this.prePath[curPos.x][curPos.y]; // 获取上个点
-					while(prePos != null) {
+					while (prePos != null) {
 						this.basicMap[prePos.x][prePos.y] = 2;// 渲染上一个点
 						this.$forceUpdate();//必须强制更新
 						this.renderMap();
@@ -68,7 +68,7 @@ export default {
 		this.exitY = this.basicMap.length - 2;
 		this.basicMap[this.exitX][this.exitY] = 1;
 		this.$forceUpdate();//必须强制更新
-    
+
 		// 渲染地图
 		this.renderMap();
 		// 处理生成迷宫

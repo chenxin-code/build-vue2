@@ -1,5 +1,6 @@
 <template>
-  <div id="map" :style="{ 'height': 30 * basicMap.length + 'px', 'width': basicMap[0]?30 * basicMap[0].length + 'px':'auto' }">
+  <div id="map"
+       :style="{ 'height': 30 * basicMap.length + 'px', 'width': basicMap[0]?30 * basicMap[0].length + 'px':'auto' }">
     <div class="line" v-for="(item1,index1) in basicMap" :key="index1">
       <div :class="[className[item2]]" v-for="(item2,index2) in item1" :key="index2"></div>
     </div>
@@ -8,17 +9,15 @@
 
 <script>
 import mazeCommon from '@/mixins/maze-common';
+
 export default {
 	mixins: [mazeCommon],
 	data() {
 		return {
 			answerStep: 0, // 播放动画延时栈数
-
 		};
 	},
 	methods: {
-		/*深度优先、递归求解*/
-
 		/**
      * 求解
      */
