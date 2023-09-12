@@ -25,7 +25,7 @@ export default {
 				{title: '模拟双色球', path: 'ssq'},
 				{title: '中软PI4版本批量创建计划', path: 'chinasofti-PI4'},
 				{title: '前端生成Excel', path: 'exportExcel'},
-				{title: '迷宫', path: 'maze', children: ['1','2']},
+				{title: '迷宫', path: 'maze'},
 			],
 		};
 	},
