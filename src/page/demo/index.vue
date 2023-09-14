@@ -26,6 +26,7 @@ export default {
 				{title: '中软PI4版本批量创建计划', path: 'chinasofti-PI4'},
 				{title: '前端生成Excel', path: 'exportExcel'},
 				{title: '迷宫', path: 'maze'},
+				{title: '3D地球', path: '3d-earth'},
 			],
 		};
 	},
