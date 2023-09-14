@@ -13,11 +13,12 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import * as TWEEN from '@tweenjs/tween.js';
+
 let scene;
 export default {
 	data() {
 		return {
-			mapDom: null,
+			earthDom: null,
 			webGLRenderer: null,
 			animationType: true, // 地球入场动画
 			rotation: true, // 自转
@@ -38,7 +39,7 @@ export default {
 					this.perspectiveCamera.lookAt(0, 0, 0);
 					this.orbitControlsAction();
 				} else {
-					this.perspectiveCamera = new THREE.PerspectiveCamera(this.fov, this.mapDom.clientWidth / this.mapDom.clientHeight, 1, 1000);
+					this.perspectiveCamera = new THREE.PerspectiveCamera(this.fov, this.earthDom.clientWidth / this.earthDom.clientHeight, 1, 1000);
 					this.perspectiveCamera.position.set(0, 0, 200);
 					this.perspectiveCamera.lookAt(0, 0, 0);
 				}
@@ -65,12 +66,12 @@ export default {
 		scene = new THREE.Scene();
 		// 渲染
 		this.webGLRenderer = new THREE.WebGLRenderer({antialias: true});
-		this.mapDom = this.$refs.earth;
-		this.webGLRenderer.setSize(this.mapDom.clientWidth, this.mapDom.clientHeight);
+		this.earthDom = this.$refs.earth;
+		this.webGLRenderer.setSize(this.earthDom.clientWidth, this.earthDom.clientHeight);
 		this.webGLRenderer.setClearColor(0x000, 0);
-		this.mapDom.appendChild(this.webGLRenderer.domElement);
+		this.earthDom.appendChild(this.webGLRenderer.domElement);
 		// 相机
-		this.perspectiveCamera = new THREE.PerspectiveCamera(this.fov, this.mapDom.clientWidth / this.mapDom.clientHeight, 1, 1000);
+		this.perspectiveCamera = new THREE.PerspectiveCamera(this.fov, this.earthDom.clientWidth / this.earthDom.clientHeight, 1, 1000);
 		this.perspectiveCamera.position.set(0, 0, 200);
 		this.perspectiveCamera.lookAt(0, 0, 0);
 		this.orbitControlsAction();
@@ -105,6 +106,7 @@ export default {
   top: 0;
   left: 0;
   z-index: -1;
+
   .button-box {
     padding: 0 15px;
     width: 10%;
@@ -112,6 +114,7 @@ export default {
     position: absolute;
     top: 50%;
     right: 0;
+
     button {
       width: 100%;
       height: 35px;
@@ -122,6 +125,7 @@ export default {
       border: none;
       border-radius: 15px;
       cursor: pointer;
+
       &:hover {
         color: #265a88;
         background-color: #fff;
