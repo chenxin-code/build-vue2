@@ -120,6 +120,10 @@ const router = new VueRouter({
 					path: '3d-earth',
 					component: resolve => require(['@/page/demo/3d-earth'], resolve),
 				},
+				{
+					path: 'camera',
+					component: resolve => require(['@/page/demo/camera'], resolve),
+				},
 			],
 		},
 		{
