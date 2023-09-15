@@ -29,27 +29,29 @@ module.exports = {
 		'vue'
 	],
 	'rules': {
-		'indent': ['off', 'tab'],
-		'linebreak-style': ['warn', 'windows'],
-		'quotes': ['warn', 'single'],
-		'semi': ['off', 'always'],
-		// 关闭名称校验
+		// 检测当前的组件名称是否使用驼峰或多单词命名
 		'vue/multi-word-component-names': 'off',
-		// 指定数组的元素之间要以空格隔开(,后面)， never参数：[ 之前和 ] 之后不能带空格，always参数：[ 之前和 ] 之后必须带空格
-		'array-bracket-spacing': ['warn', 'never'],
-		// 单行100个字符
-		'max-len': ['warn', { code : 100 }],
-		// 使用 === 替代 ==
+		// 强制执行一致的缩进
+		'indent': ['off', 'tab'],
+		// 强制执行一致的换行样式
+		'linebreak-style': ['warn', 'windows'],
+		// 强制一致使用反引号、双引号或单引号
+		'quotes': ['warn', 'single'],
+		// 强制执行最大行长度
+		'max-len': ['warn', { code : 200 }],
+		// 要求使用 === 和 !==
 		'eqeqeq': ['warn', 'allow-null'],
-		// 控制逗号前后的空格
+		// 在逗号前后强制执行一致的间距
 		'comma-spacing': ['warn', { 'before': false, 'after': true }],
-		'no-unused-vars': 'warn',
+		// 禁止未使用的变量
+		'no-unused-vars': 'off',
 		// 禁止不必要的布尔转换
 		'no-extra-boolean-cast': 'warn',
 		// 禁止不必要的分号
 		'no-extra-semi': 'warn',
 		// 禁止在条件中使用常量表达式
 		'no-constant-condition': 'warn',
-		"no-debugger": process.env.NODE_ENV === '生产环境' ? 'error' : 'off',
+		// 禁止使用 debugger
+		'no-debugger': process.env.NODE_ENV === '生产环境' ? 'error' : 'off',
 	}
 };
