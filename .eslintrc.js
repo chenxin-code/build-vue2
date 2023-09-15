@@ -29,16 +29,16 @@ module.exports = {
 		'vue'
 	],
 	'rules': {
-		'indent': ['error', 'tab'],
-		'linebreak-style': ['error', 'windows'],
-		'quotes': ['error', 'single'],
-		'semi': ['error', 'always'],
+		'indent': ['off', 'tab'],
+		'linebreak-style': ['warn', 'windows'],
+		'quotes': ['warn', 'single'],
+		'semi': ['off', 'always'],
 		// 关闭名称校验
 		'vue/multi-word-component-names': 'off',
 		// 指定数组的元素之间要以空格隔开(,后面)， never参数：[ 之前和 ] 之后不能带空格，always参数：[ 之前和 ] 之后必须带空格
 		'array-bracket-spacing': ['warn', 'never'],
 		// 单行100个字符
-		//'max-len': ['warn', { code : 100 }],
+		'max-len': ['warn', { code : 100 }],
 		// 使用 === 替代 ==
 		'eqeqeq': ['warn', 'allow-null'],
 		// 控制逗号前后的空格
@@ -50,5 +50,6 @@ module.exports = {
 		'no-extra-semi': 'warn',
 		// 禁止在条件中使用常量表达式
 		'no-constant-condition': 'warn',
+		"no-debugger": process.env.NODE_ENV === '生产环境' ? 'error' : 'off',
 	}
 };
