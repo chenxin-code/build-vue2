@@ -10,7 +10,7 @@ const router = new VueRouter({
 		//首页
 		{
 			path: '/',
-			redirect: '/test-api',
+			redirect: '/demo',
 		},
 		{
 			path: '/lodash',
