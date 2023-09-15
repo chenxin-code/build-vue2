@@ -53,5 +53,7 @@ module.exports = {
 		'no-constant-condition': 'warn',
 		// 禁止使用 debugger
 		'no-debugger': process.env.NODE_ENV === '生产环境' ? 'error' : 'off',
+		// 在注释中的 // 或 /* 之后强制执行一致的间距
+		'spaced-comment': ['warn', 'always'],
 	}
 };

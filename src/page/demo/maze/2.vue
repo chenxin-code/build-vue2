@@ -28,19 +28,19 @@ export default {
 				let curPos = stack.pop();
 				this.pathVisited[curPos.x][curPos.y] = true; // 求解时访问过
 				this.basicMap[curPos.x][curPos.y] = 3;
-				this.$forceUpdate();//必须强制更新
+				this.$forceUpdate();// 必须强制更新
 				this.renderMap();
 				yield;
 				// 找到出口
 				if (curPos.x === this.exitX && curPos.y === this.exitY) {
 					// 绘制解
 					this.basicMap[curPos.x][curPos.y] = 2;
-					this.$forceUpdate();//必须强制更新
+					this.$forceUpdate();// 必须强制更新
 					this.renderMap();
 					let prePos = this.prePath[curPos.x][curPos.y]; // 获取上个点
 					while (prePos != null) {
 						this.basicMap[prePos.x][prePos.y] = 2;// 渲染上一个点
-						this.$forceUpdate();//必须强制更新
+						this.$forceUpdate();// 必须强制更新
 						this.renderMap();
 						yield;
 						prePos = this.prePath[prePos.x][prePos.y]; // 获取上上个点
@@ -67,7 +67,7 @@ export default {
 		this.exitX = this.basicMap[0].length - 2;
 		this.exitY = this.basicMap.length - 2;
 		this.basicMap[this.exitX][this.exitY] = 1;
-		this.$forceUpdate();//必须强制更新
+		this.$forceUpdate();// 必须强制更新
 
 		// 渲染地图
 		this.renderMap();

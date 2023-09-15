@@ -24,7 +24,7 @@ export default {
 			// commit 调用 mutations
 			this.$store.commit('changeYear', e.target.value);
 			// dispatch 调用 actions
-			//this.$store.dispatch('changeYear', e.target.value);
+			// this.$store.dispatch('changeYear', e.target.value);
 		},
 	},
 };

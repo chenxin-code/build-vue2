@@ -12,11 +12,11 @@ export default {
 	methods: {},
 	mounted() {
 		// forEach 遍历数组 没有返回值
-		//let newArr1 =
+		// let newArr1 =
 		this.arr.forEach((item, index) => {
 			console.log(index, item);
-		});//编辑器黄色警告
-		//console.log('forEach返回', newArr1);
+		});// 编辑器黄色警告
+		// console.log('forEach返回', newArr1);
 		// map 遍历数组 有返回值，根据回调里的返回值生成一个新数组
 		let newArr2 = this.arr.map((item, index) => {
 			console.log(index, item);

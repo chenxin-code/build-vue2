@@ -51,7 +51,7 @@ export default {
 		}
 	},
 	mounted() {
-		//动态产品线
+		// 动态产品线
 		this.lineData = ['产品线1', '产品线2', '产品线3', '产品线4', '产品线5'];
 		let colData = [];
 		this.lineData.forEach(item=>{
@@ -60,12 +60,12 @@ export default {
 				content: null,
 			});
 		});
-		//动态字母
+		// 动态字母
 		['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach(item=>{
 			this.rowData.push({
 				rowName: item,
 				time: 1,
-				colData: _.cloneDeep(colData), //必须使用深拷贝
+				colData: _.cloneDeep(colData), // 必须使用深拷贝
 			});
 		});
 	}

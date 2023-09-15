@@ -1,6 +1,6 @@
 let timer = null;
 
-//防抖1
+// 防抖1
 export function debounce1(fn, delay = 200) {
 	if (typeof fn !== 'function') {
 		throw new Error('必须传入函数');
@@ -15,7 +15,7 @@ export function debounce1(fn, delay = 200) {
 	}, delay);
 }
 
-//防抖2
+// 防抖2
 export const debounce2 = function (action, delay = 200) {
 	function delayBounces() {
 		let ctx = this, args = arguments;
@@ -28,7 +28,7 @@ export const debounce2 = function (action, delay = 200) {
 	return delayBounces();
 };
 
-//浅拷贝
+// 浅拷贝
 export function shallowClone(iniObj) {
 	console.log('shallowClone');
 	var obj = {};
@@ -38,7 +38,7 @@ export function shallowClone(iniObj) {
 	return obj;
 }
 
-//深拷贝
+// 深拷贝
 export function deepClone(iniObj, finalObj, first = true) {
 	if (first) {
 		console.log('deepClone');

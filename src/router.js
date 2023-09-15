@@ -5,9 +5,9 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
 	mode: 'hash',
-	//mode: 'history',
+	// mode: 'history',
 	routes: [
-		//首页
+		// 首页
 		{
 			path: '/',
 			redirect: '/demo',
@@ -43,13 +43,13 @@ const router = new VueRouter({
 			// 路由元信息
 			meta: {
 				keepAlive: true, // 缓存
-				//keepAlive: false // 不缓存
+				// keepAlive: false // 不缓存
 			},
 		},
 		{
 			path: '/css',
 			component: resolve => require(['@/page/css/index'], resolve),
-			//嵌套路由
+			// 嵌套路由
 			children: [
 				{
 					path: 'flex',
@@ -60,7 +60,7 @@ const router = new VueRouter({
 		{
 			path: '/es6',
 			component: resolve => require(['@/page/es6/index'], resolve),
-			//嵌套路由
+			// 嵌套路由
 			children: [
 				{
 					path: 'forin-forof-foreach',
@@ -75,7 +75,7 @@ const router = new VueRouter({
 		{
 			path: '/demo',
 			component: resolve => require(['@/page/demo/index'], resolve),
-			//嵌套路由
+			// 嵌套路由
 			children: [
 				{
 					path: 'water',
@@ -104,7 +104,7 @@ const router = new VueRouter({
 				{
 					path: 'maze',
 					component: resolve => require(['@/page/demo/maze/index'], resolve),
-					//嵌套路由
+					// 嵌套路由
 					children: [
 						{
 							path: '1',
@@ -146,7 +146,7 @@ const router = new VueRouter({
 			path: '/404',
 			component: resolve => require(['@/page/404'], resolve)
 		},
-		//一定放最后
+		// 一定放最后
 		{
 			path: '*',
 			redirect: '/404'
@@ -178,7 +178,7 @@ router.beforeEach((to, from, next) => {
 	} else {
 		next({
 			path: '登录页面的path',
-			query: {redirect: to.fullPath}//登录成功后跳回来
+			query: {redirect: to.fullPath}// 登录成功后跳回来
 		});
 	}
 

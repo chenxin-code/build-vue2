@@ -30,10 +30,10 @@ export default {
 			}
 			console.log('生成好的数据', arr);
 			if (freeze) {
-				this.listFreeze = Object.freeze(arr);//耗时短
+				this.listFreeze = Object.freeze(arr);// 耗时短
 				console.log('非响应式数据【耗时短】', this.listFreeze);
 			} else {
-				this.list = arr;//耗时长
+				this.list = arr;// 耗时长
 				console.log('响应式数据【耗时长】', this.list);
 			}
 		},

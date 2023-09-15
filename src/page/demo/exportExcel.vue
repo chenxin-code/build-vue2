@@ -8,7 +8,7 @@
 </template>
 
 <script>
-//import XLSX from 'xlsx';//使用import有的属性无法找到
+// import XLSX from 'xlsx';//使用import有的属性无法找到
 const XLSX = require('xlsx');
 
 export default {

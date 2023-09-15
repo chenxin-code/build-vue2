@@ -60,7 +60,7 @@ export default {
 				'01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
 				'11', '12', '13', '14', '15', '16',
 			],
-			//开奖
+			// 开奖
 			kj_red1: null,
 			kj_red2: null,
 			kj_red3: null,
@@ -68,7 +68,7 @@ export default {
 			kj_red5: null,
 			kj_red6: null,
 			kj_blue: null,
-			//累计
+			// 累计
 			leijiCost: 0,
 			leijiZhongjiang: 0,
 		};
@@ -96,7 +96,7 @@ export default {
 				jixuanResult.push({
 					red_format: red_format,
 					blue_format: blue_format,
-					duijiang: 0, //兑奖金额
+					duijiang: 0, // 兑奖金额
 				});
 			}
 			this.jixuanResult = jixuanResult;
@@ -111,7 +111,7 @@ export default {
 			this.kj_red5 = kj_redBall[4];
 			this.kj_red6 = kj_redBall[5];
 			this.kj_blue = kj_blueBall[0];
-			//是否匹配，兑奖金额
+			// 是否匹配，兑奖金额
 			this.jixuanResult.forEach(item1 => {
 				let redMatchNum = 0, blueMatchNum = 0;
 				item1.red_format.forEach(item2 => {
@@ -126,14 +126,14 @@ export default {
 						blueMatchNum++;
 					}
 				});
-				//根据官网中奖规则编写
+				// 根据官网中奖规则编写
 				if (blueMatchNum === 0) {
 					if (redMatchNum === 4) {
 						item1.duijiang = 10;
 					} else if (redMatchNum === 5) {
 						item1.duijiang = 200;
 					} else if (redMatchNum === 6) {
-						item1.duijiang = 50000;//二等奖
+						item1.duijiang = 50000;// 二等奖
 					} else {
 						item1.duijiang = 0;
 					}
@@ -147,7 +147,7 @@ export default {
 					} else if (redMatchNum === 5) {
 						item1.duijiang = 3000;
 					} else if (redMatchNum === 6) {
-						item1.duijiang = 5000000;//一等奖
+						item1.duijiang = 5000000;// 一等奖
 					} else {
 						item1.duijiang = 0;
 					}
@@ -168,7 +168,7 @@ export default {
 			}
 			return sData.slice(min);
 		},
-		//冒泡排序
+		// 冒泡排序
 		bubbleSort(arr) {
 			for (let i = 0; i < arr.length; i++) {
 				for (let j = 0; j < arr.length - 1 - i; j++) {

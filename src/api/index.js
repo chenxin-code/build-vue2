@@ -1,12 +1,12 @@
 import axios from 'axios';
-import jsonBigint from 'json-bigint';//解决前端精度丢失  ----  中科泰岳
-import qs from 'qs';//是否使用qs序列化参数：取决于后端要如何接收数据
+import jsonBigint from 'json-bigint';// 解决前端精度丢失  ----  中科泰岳
+import qs from 'qs';// 是否使用qs序列化参数：取决于后端要如何接收数据
 
 const jsonBigintString = jsonBigint({storeAsString: true});
 
-//----------------------------------------- 百度新闻 -----------------------------------------//
+// ----------------------------------------- 百度新闻 -----------------------------------------//
 
-//创建axios实例
+// 创建axios实例
 export const baiduNews = axios.create({
 	/*
     这是一个巧妙的用法
@@ -27,10 +27,10 @@ export const baiduNews = axios.create({
 			return data;
 		}
 	],
-	//允许在把响应数据传递给 then/catch 之前对它们进行修改
+	// 允许在把响应数据传递给 then/catch 之前对它们进行修改
 	transformResponse: [
 		function (data) {
-			//console.log('transformResponse', 'data', data);
+			// console.log('transformResponse', 'data', data);
 			try {
 				return jsonBigintString.parse(data);
 			} catch (e) {
@@ -39,7 +39,7 @@ export const baiduNews = axios.create({
 		}
 	],
 });
-//请求拦截
+// 请求拦截
 baiduNews.interceptors.request.use(config => {
 	// loading 开启
 	// ......
@@ -63,7 +63,7 @@ baiduNews.interceptors.request.use(config => {
 }, error => {
 	return Promise.reject(error);
 });
-//响应拦截
+// 响应拦截
 baiduNews.interceptors.response.use(response => {
 	// loading 关闭
 	// ......
@@ -84,9 +84,9 @@ baiduNews.interceptors.response.use(response => {
 	return Promise.reject(error);
 });
 
-//----------------------------------------- 淘宝搜索提示 -----------------------------------------//
+// ----------------------------------------- 淘宝搜索提示 -----------------------------------------//
 
-//创建axios实例
+// 创建axios实例
 export const taobaoSearchSuggest = axios.create({
 	/*
     这是一个巧妙的用法

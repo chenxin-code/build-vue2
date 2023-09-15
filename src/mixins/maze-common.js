@@ -7,7 +7,7 @@ export default {
 			basicMap: [], // 迷宫数据
 			visited: [], // 逻辑访问数据
 			range: [[-1, 0], [0, 1], [1, 0], [0, -1]], // 偏移量
-			pathVisited: [], //求解访问数据
+			pathVisited: [], // 求解访问数据
 			exitX: 0,
 			exitY: 0,
 			className: ['wall', 'road', 'path'],
@@ -49,7 +49,7 @@ export default {
 			// const mapDom = document.getElementById('map');
 			// mapDom.style.height = 30 * this.basicMap.length + 'px';
 			// mapDom.style.width = 30 * this.basicMap[0].length + 'px';
-			//mapDom.innerHTML = dom;
+			// mapDom.innerHTML = dom;
 		},
 		/**
          * 判断是否越界
@@ -78,7 +78,7 @@ export default {
 					if (this.isRange(newX, newY) && !this.visited[newX][newY]) {
 						yield;
 						this.basicMap[(newX + curPos.x) / 2][(newY + curPos.y) / 2] = 1;
-						this.$forceUpdate();//必须强制更新
+						this.$forceUpdate();// 必须强制更新
 						if (Math.random() > 0.5) {
 							stack.push({x: newX, y: newY});
 						} else {

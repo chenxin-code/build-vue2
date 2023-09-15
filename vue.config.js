@@ -6,19 +6,19 @@ vue.config.js 是一个可选的配置文件，如果项目的 (和 package.json
 
 */
 
-//打包分析
-//let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-//压缩js
+// 打包分析
+// let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// 压缩js
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-	publicPath: '', //默认 '/'
-	//当运行 vue-cli-service build 时生成的生产环境构建文件的目录。
-	outputDir: 'dist', //默认 'dist'
-	//生成的静态资源在它们的文件名中包含了 hash 以便更好的控制缓存。
-	filenameHashing: true, //默认 true
-	//单页面不配置  多页面才配置
-	pages: undefined, //默认 undefined
+	publicPath: '', // 默认 '/'
+	// 当运行 vue-cli-service build 时生成的生产环境构建文件的目录。
+	outputDir: 'dist', // 默认 'dist'
+	// 生成的静态资源在它们的文件名中包含了 hash 以便更好的控制缓存。
+	filenameHashing: true, // 默认 true
+	// 单页面不配置  多页面才配置
+	pages: undefined, // 默认 undefined
 	/*
   调整 webpack 配置最简单的方式就是在 vue.config.js 中的 configureWebpack 选项提供一个对象，
   该对象将会被 webpack-merge 合并入最终的 webpack 配置。
@@ -56,15 +56,15 @@ module.exports = {
 					uglifyOptions: {
 						compress: {
 							dead_code: true, // 去除不可达代码
-							drop_console: true, //去除console
-							drop_debugger: true, //去除debugger
+							drop_console: true, // 去除console
+							drop_debugger: true, // 去除debugger
 							pure_funcs: ['console.log']
 						}
 					}
 				})
 			]
 		};
-		//less配置  有问题？？
+		// less配置  有问题？？
 		// config.module.rules.push({
 		//   test: /\.less$/,
 		//   loader: "style-loader!css-loader!less-loader",

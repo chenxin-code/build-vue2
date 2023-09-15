@@ -26,8 +26,8 @@
 export default {
 	data() {
 		return {
-			justifyContent: 'flex-start', //默认值
-			justifyContentList: [//可选值
+			justifyContent: 'flex-start', // 默认值
+			justifyContentList: [// 可选值
 				'flex-start',
 				'flex-end',
 				'space-between',
@@ -36,8 +36,8 @@ export default {
 				'center',
 				'stretch',
 			],
-			alignItems: 'flex-start', //默认值
-			alignItemsList: [//可选值
+			alignItems: 'flex-start', // 默认值
+			alignItemsList: [// 可选值
 				'flex-start',
 				'flex-end',
 				'center',
