@@ -55,5 +55,11 @@ module.exports = {
 		'no-debugger': process.env.NODE_ENV === '生产环境' ? 'error' : 'off',
 		// 在注释中的 // 或 /* 之后强制执行一致的间距
 		'spaced-comment': ['warn', 'always'],
+		// 在大括号内强制执行一致的间距
+		'object-curly-spacing': ['warn', 'never', {objectsInObjects: true}],
+		// 在数组括号内强制执行一致的间距
+		'array-bracket-spacing': ['warn', 'never'],
+		// 为块强制执行一致的大括号样式
+		'brace-style': ['warn', '1tbs', {allowSingleLine: true}],
 	}
 };
