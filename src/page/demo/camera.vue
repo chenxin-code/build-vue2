@@ -5,10 +5,10 @@
     </el-link>
     <video id="videoCamera" :width="videoWidth" :height="videoHeight" autoplay></video>
     <canvas id="canvasCamera" :width="videoWidth" :height="videoHeight"></canvas>
-    <div style="display: flex;justify-content: space-between;align-items: center;">
-      <el-button type="primary" @click="setImage()">拍照</el-button>
+    <el-button-group>
       <el-button type="primary" @click="getCompetence()">打开摄像头</el-button>
-    </div>
+      <el-button type="primary" @click="setImage()">拍照</el-button>
+    </el-button-group>
   </div>
 </template>
 
