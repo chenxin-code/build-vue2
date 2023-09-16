@@ -27,7 +27,6 @@ export default {
   methods: {
     // 调用权限（打开摄像头功能）
     getCompetence() {
-      var _this = this
       this.thisCancas = document.getElementById('canvasCamera')
       this.thisContext = this.thisCancas.getContext('2d')
       this.thisVideo = document.getElementById('videoCamera')
@@ -39,7 +38,7 @@ export default {
       // 使用getUserMedia，因为它会覆盖现有的属性。
       // 这里，如果缺少getUserMedia属性，就添加它。
       if (navigator.mediaDevices.getUserMedia === undefined) {
-        navigator.mediaDevices.getUserMedia = function (constraints) {
+        navigator.mediaDevices.getUserMedia = (constraints) => {
           // 首先获取现存的getUserMedia(如果存在)
           var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.getUserMedia
           // 有些浏览器不支持，会返回错误信息
@@ -48,7 +47,7 @@ export default {
             return Promise.reject(new Error('getUserMedia is not implemented in this browser'))
           }
           // 否则，使用Promise将调用包装到旧的navigator.getUserMedia
-          return new Promise(function (resolve, reject) {
+          return new Promise((resolve, reject) => {
             getUserMedia.call(navigator, constraints, resolve, reject)
           })
         }
@@ -57,16 +56,16 @@ export default {
         audio: false,
         video: {width: this.videoWidth, height: this.videoHeight, transform: 'scaleX(-1)'}
       }
-      navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
+      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
         // 旧的浏览器可能没有srcObject
-        if ('srcObject' in _this.thisVideo) {
-          _this.thisVideo.srcObject = stream
+        if ('srcObject' in this.thisVideo) {
+          this.thisVideo.srcObject = stream
         } else {
           // 避免在新的浏览器中使用它，因为它正在被弃用。
-          _this.thisVideo.src = window.URL.createObjectURL(stream)
+          this.thisVideo.src = window.URL.createObjectURL(stream)
         }
-        _this.thisVideo.onloadedmetadata = function (e) {
-          _this.thisVideo.play()
+        this.thisVideo.onloadedmetadata = () => {
+          this.thisVideo.play()
         }
       }).catch(err => {
         console.log(err)
@@ -75,12 +74,11 @@ export default {
     //  绘制图片（拍照功能）
 
     setImage() {
-      var _this = this
       // 点击，canvas画图
-      _this.thisContext.drawImage(_this.thisVideo, 0, 0, _this.videoWidth, _this.videoHeight)
+      this.thisContext.drawImage(this.thisVideo, 0, 0, this.videoWidth, this.videoHeight)
       // 获取图片base64链接
       var image = this.thisCancas.toDataURL('image/png')
-      _this.imgSrc = image
+      this.imgSrc = image
       const file = image
       const time = (new Date()).valueOf()
       const name = time + '.png'
@@ -113,16 +111,13 @@ export default {
         type: type
       })
     },
-    // 关闭摄像头
-    stopNavigator() {
-      this.thisVideo.srcObject.getTracks()[0].stop()
-    }
   },
   mounted() {
     this.getCompetence()
   },
   unmounted() {
-    this.stopNavigator()
+    // 关闭摄像头
+    this.thisVideo.srcObject.getTracks()[0].stop()
   },
 }
 
