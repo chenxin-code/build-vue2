@@ -3,8 +3,8 @@
     <el-link type="warning" icon="el-icon-document"
              href="https://blog.csdn.net/qq_44979541/article/details/129765021" target="_blank">参考CSDN
     </el-link>
-    <video id="videoCamera" :width="videoWidth" :height="videoHeight" autoplay></video>
-    <canvas id="canvasCamera" :width="videoWidth" :height="videoHeight"></canvas>
+    <video id="video" :width="videoWidth" :height="videoHeight" autoplay></video>
+    <canvas id="canvas" :width="videoWidth" :height="videoHeight"></canvas>
     <el-button-group>
       <el-button type="primary" @click="getCompetence()">打开摄像头</el-button>
       <el-button type="primary" @click="setImage()">拍照</el-button>
@@ -18,18 +18,17 @@ export default {
     return {
       videoWidth: 300,
       videoHeight: 300,
-      imgSrc: '',
-      thisCancas: null,
-      thisContext: null,
-      thisVideo: null,
+      canvas: null,
+      context: null,
+      video: null,
     }
   },
   methods: {
     // 调用权限（打开摄像头功能）
     getCompetence() {
-      this.thisCancas = document.getElementById('canvasCamera')
-      this.thisContext = this.thisCancas.getContext('2d')
-      this.thisVideo = document.getElementById('videoCamera')
+      this.canvas = document.getElementById('canvas')
+      this.context = this.canvas.getContext('2d')
+      this.video = document.getElementById('video')
       // 旧版本浏览器可能根本不支持mediaDevices，我们首先设置一个空对象
       if (navigator.mediaDevices === undefined) {
         navigator.mediaDevices = {}
@@ -58,33 +57,27 @@ export default {
       }
       navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
         // 旧的浏览器可能没有srcObject
-        if ('srcObject' in this.thisVideo) {
-          this.thisVideo.srcObject = stream
+        if ('srcObject' in this.video) {
+          this.video.srcObject = stream
         } else {
           // 避免在新的浏览器中使用它，因为它正在被弃用。
-          this.thisVideo.src = window.URL.createObjectURL(stream)
+          this.video.src = window.URL.createObjectURL(stream)
         }
-        this.thisVideo.onloadedmetadata = () => {
-          this.thisVideo.play()
+        this.video.onloadedmetadata = () => {
+          this.video.play()
         }
       }).catch(err => {
         console.log(err)
       })
     },
     //  绘制图片（拍照功能）
-
     setImage() {
       // 点击，canvas画图
-      this.thisContext.drawImage(this.thisVideo, 0, 0, this.videoWidth, this.videoHeight)
+      this.context.drawImage(this.video, 0, 0, this.videoWidth, this.videoHeight)
       // 获取图片base64链接
-      var image = this.thisCancas.toDataURL('image/png')
-      this.imgSrc = image
-      const file = image
-      const time = (new Date()).valueOf()
-      const name = time + '.png'
-      const conversions = this.base64ToFile(file, name)
+      const file = this.canvas.toDataURL('image/png')
       const data = new FormData()
-      data.append('file', conversions)
+      data.append('file', this.base64ToFile(file, (new Date()).valueOf() + '.png'))
     },
     // base64图片转file的方法（base64图片, 设置生成file的文件名）
     base64ToFile(base64, fileName) {
@@ -117,7 +110,7 @@ export default {
   },
   unmounted() {
     // 关闭摄像头
-    this.thisVideo.srcObject.getTracks()[0].stop()
+    this.video.srcObject.getTracks()[0].stop()
   },
 }
 
