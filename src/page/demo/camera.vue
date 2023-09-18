@@ -3,8 +3,8 @@
     <el-link type="warning" icon="el-icon-document"
              href="https://blog.csdn.net/qq_44979541/article/details/129765021" target="_blank">参考CSDN
     </el-link>
-    <video id="video" :width="videoWidth" :height="videoHeight" autoplay></video>
-    <canvas id="canvas" :width="videoWidth" :height="videoHeight"></canvas>
+    <video ref="video" :width="videoWidth" :height="videoHeight" autoplay />
+    <canvas ref="canvas" :width="videoWidth" :height="videoHeight" />
     <el-button-group>
       <el-button type="primary" @click="getCompetence()">打开摄像头</el-button>
       <el-button type="primary" @click="setImage()">拍照</el-button>
@@ -18,17 +18,11 @@ export default {
     return {
       videoWidth: 300,
       videoHeight: 300,
-      canvas: null,
-      context: null,
-      video: null,
     }
   },
   methods: {
     // 调用权限（打开摄像头功能）
     getCompetence() {
-      this.canvas = document.getElementById('canvas')
-      this.context = this.canvas.getContext('2d')
-      this.video = document.getElementById('video')
       // 旧版本浏览器可能根本不支持mediaDevices，我们首先设置一个空对象
       if (navigator.mediaDevices === undefined) {
         navigator.mediaDevices = {}
@@ -57,14 +51,14 @@ export default {
       }
       navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
         // 旧的浏览器可能没有srcObject
-        if ('srcObject' in this.video) {
-          this.video.srcObject = stream
+        if ('srcObject' in this.$refs.video) {
+          this.$refs.video.srcObject = stream
         } else {
           // 避免在新的浏览器中使用它，因为它正在被弃用。
-          this.video.src = window.URL.createObjectURL(stream)
+          this.$refs.video.src = window.URL.createObjectURL(stream)
         }
-        this.video.onloadedmetadata = () => {
-          this.video.play()
+        this.$refs.video.onloadedmetadata = () => {
+          this.$refs.video.play()
         }
       }).catch(err => {
         console.log(err)
@@ -73,9 +67,9 @@ export default {
     //  绘制图片（拍照功能）
     setImage() {
       // 点击，canvas画图
-      this.context.drawImage(this.video, 0, 0, this.videoWidth, this.videoHeight)
+      this.$refs.canvas.getContext('2d').drawImage(this.$refs.video, 0, 0, this.videoWidth, this.videoHeight)
       // 获取图片base64链接
-      const file = this.canvas.toDataURL('image/png')
+      const file = this.$refs.canvas.toDataURL('image/png')
       const data = new FormData()
       data.append('file', this.base64ToFile(file, (new Date()).valueOf() + '.png'))
     },
@@ -110,7 +104,7 @@ export default {
   },
   unmounted() {
     // 关闭摄像头
-    this.video.srcObject.getTracks()[0].stop()
+    this.$refs.video.srcObject.getTracks()[0].stop()
   },
 }
 
