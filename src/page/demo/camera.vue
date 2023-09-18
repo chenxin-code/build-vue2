@@ -1,13 +1,13 @@
 <template>
-  <div class="camera_outer">
+  <div>
     <el-link type="warning" icon="el-icon-document"
              href="https://blog.csdn.net/qq_44979541/article/details/129765021" target="_blank">参考CSDN
     </el-link>
-    <video ref="video" :width="videoWidth" :height="videoHeight" autoplay />
-    <canvas ref="canvas" :width="videoWidth" :height="videoHeight" />
+    <video ref="video" :width="width" :height="height" autoplay/>
+    <canvas ref="canvas" :width="width" :height="height"/>
     <el-button-group>
-      <el-button type="primary" @click="getCompetence()">打开摄像头</el-button>
-      <el-button type="primary" @click="setImage()">拍照</el-button>
+      <el-button icon="el-icon-video-camera" round @click="openCamera()">打开摄像头</el-button>
+      <el-button type="primary" icon="el-icon-camera" round @click="photograph()">拍照</el-button>
     </el-button-group>
   </div>
 </template>
@@ -16,13 +16,13 @@
 export default {
   data() {
     return {
-      videoWidth: 300,
-      videoHeight: 300,
+      width: 300,
+      height: 300,
     }
   },
   methods: {
     // 调用权限（打开摄像头功能）
-    getCompetence() {
+    openCamera() {
       // 旧版本浏览器可能根本不支持mediaDevices，我们首先设置一个空对象
       if (navigator.mediaDevices === undefined) {
         navigator.mediaDevices = {}
@@ -45,11 +45,10 @@ export default {
           })
         }
       }
-      var constraints = {
+      navigator.mediaDevices.getUserMedia({
         audio: false,
-        video: {width: this.videoWidth, height: this.videoHeight, transform: 'scaleX(-1)'}
-      }
-      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+        video: {width: this.width, height: this.height, transform: 'scaleX(-1)'}
+      }).then((stream) => {
         // 旧的浏览器可能没有srcObject
         if ('srcObject' in this.$refs.video) {
           this.$refs.video.srcObject = stream
@@ -65,13 +64,12 @@ export default {
       })
     },
     //  绘制图片（拍照功能）
-    setImage() {
+    photograph() {
       // 点击，canvas画图
-      this.$refs.canvas.getContext('2d').drawImage(this.$refs.video, 0, 0, this.videoWidth, this.videoHeight)
+      this.$refs.canvas.getContext('2d').drawImage(this.$refs.video, 0, 0, this.width, this.height)
       // 获取图片base64链接
       const file = this.$refs.canvas.toDataURL('image/png')
-      const data = new FormData()
-      data.append('file', this.base64ToFile(file, (new Date()).valueOf() + '.png'))
+      new FormData().append('file', this.base64ToFile(file, (new Date()).valueOf() + '.png'))
     },
     // base64图片转file的方法（base64图片, 设置生成file的文件名）
     base64ToFile(base64, fileName) {
@@ -100,28 +98,19 @@ export default {
     },
   },
   mounted() {
-    this.getCompetence()
+    this.openCamera()
   },
   unmounted() {
     // 关闭摄像头
     this.$refs.video.srcObject.getTracks()[0].stop()
   },
 }
-
 </script>
 
 <style lang="less" scoped>
-.camera_outer {
-  position: relative;
-  overflow: hidden;
-  background-size: 100%;
-
-  video,
-  canvas {
-    -moz-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    transform: scaleX(-1);
-  }
+//视频、图片水平翻转
+video,
+canvas {
+  transform: scaleX(-1);
 }
 </style>
