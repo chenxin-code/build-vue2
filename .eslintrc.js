@@ -49,6 +49,8 @@ module.exports = {
 		'no-extra-boolean-cast': 'warn',
 		// 禁止不必要的分号
 		'no-extra-semi': 'warn',
+		//要求或禁止使用分号而不是 ASI
+		'semi': ['warn', 'always'],
 		// 禁止在条件中使用常量表达式
 		'no-constant-condition': 'warn',
 		// 禁止使用 debugger
