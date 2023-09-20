@@ -36,8 +36,11 @@ export default {};
   /* 设置box-shadow :水平方向阴影  垂直方向阴影  模糊距离  阴影尺寸  阴影颜色  内/外阴影(inset/outset(默认))
   盒子阴影可以有多组值,之间用逗号隔开
   水平阴影和垂直阴影必须写,其余4个是可选的*/
-  box-shadow: inset 10px 20px 30px rgba(0, 0, 0, 0.5), 10px 10px 20px rgba(0, 0, 0, 0.3), 15px 15px 30px rgba(0, 0, 0, 0.05),
-  inset -10px -10px 15px rgba(255, 255, 254, 0.83);
+  box-shadow:
+      inset 10px 20px 30px rgba(0, 0, 0, 0.5),
+      10px 10px 20px rgba(0, 0, 0, 0.3),
+      15px 15px 30px rgba(0, 0, 0, 0.05),
+      inset -10px -10px 15px rgba(255, 255, 254, 0.83);
   /*使用关键帧  watermove  9s播放  匀速 无限循环*/
   animation: watermove .9s linear infinite;
 }
