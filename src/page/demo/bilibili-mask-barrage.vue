@@ -1,18 +1,18 @@
 <template>
   <div>
     <div id="container">
-      <video id="video" src="@/img/bilibili-mask-barrage/demo.mp4" controls></video>
+      <video id="video" src="@/res/bilibili-mask-barrage/demo.mp4" controls></video>
     </div>
     <div class="danmaku-editor">
-      <img id="avatar-result" src="@/img/bilibili-mask-barrage/avatar-none.svg"
-           data-empty="/img/bilibili-mask-barrage/avatar-none.svg" alt="avatar-none" title="选择头像">
+      <img id="avatar-result" src="@/res/bilibili-mask-barrage/avatar-none.svg"
+           data-empty="/res/bilibili-mask-barrage/avatar-none.svg" alt="avatar-none" title="选择头像">
       <div id="avatar-selector">
-        <img src="@/img/bilibili-mask-barrage/avatar-01.svg" alt="">
-        <img src="@/img/bilibili-mask-barrage/avatar-02.svg" alt="">
-        <img src="@/img/bilibili-mask-barrage/avatar-03.svg" alt="">
-        <img src="@/img/bilibili-mask-barrage/avatar-04.svg" alt="">
-        <img src="@/img/bilibili-mask-barrage/avatar-05.svg" alt="">
-        <img src="@/img/bilibili-mask-barrage/avatar-06.svg" alt="">
+        <img src="@/res/bilibili-mask-barrage/avatar-01.svg" alt="">
+        <img src="@/res/bilibili-mask-barrage/avatar-02.svg" alt="">
+        <img src="@/res/bilibili-mask-barrage/avatar-03.svg" alt="">
+        <img src="@/res/bilibili-mask-barrage/avatar-04.svg" alt="">
+        <img src="@/res/bilibili-mask-barrage/avatar-05.svg" alt="">
+        <img src="@/res/bilibili-mask-barrage/avatar-06.svg" alt="">
         <span>None</span>
       </div>
       <input type="text" id="danmaku_input" placeholder="填写弹幕内容...">
@@ -72,12 +72,12 @@ export default {
       null,
       null,
       null,
-      require('@/img/bilibili-mask-barrage/avatar-01.svg'),
-      require('@/img/bilibili-mask-barrage/avatar-02.svg'),
-      require('@/img/bilibili-mask-barrage/avatar-03.svg'),
-      require('@/img/bilibili-mask-barrage/avatar-04.svg'),
-      require('@/img/bilibili-mask-barrage/avatar-05.svg'),
-      require('@/img/bilibili-mask-barrage/avatar-06.svg'),
+      require('@/res/bilibili-mask-barrage/avatar-01.svg'),
+      require('@/res/bilibili-mask-barrage/avatar-02.svg'),
+      require('@/res/bilibili-mask-barrage/avatar-03.svg'),
+      require('@/res/bilibili-mask-barrage/avatar-04.svg'),
+      require('@/res/bilibili-mask-barrage/avatar-05.svg'),
+      require('@/res/bilibili-mask-barrage/avatar-06.svg'),
     ];
 
 // 重置画布高度，避免弹幕遮挡视频播放控件

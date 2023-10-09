@@ -87,7 +87,7 @@ export default {
     this.orbitControlsAction();
     // 纹理贴图
     let textureLoader = new THREE.TextureLoader();
-    textureLoader.load(require('@/img/earth.jpg'), function (texture) {
+    textureLoader.load(require('@/res/3d-earth/earth.jpg'), function (texture) {
       // 创建地球
       let sphereGeometry = new THREE.SphereGeometry(70, 100, 100);
       // 设置颜色贴图属性值
@@ -108,7 +108,7 @@ export default {
 .universe {
   width: 100%;
   height: 100%;
-  background-image: url('./../../img/universe.png');
+  background-image: url('./../../res/3d-earth/universe.png');
   background-size: 100% 130%;
   overflow: hidden;
   cursor: grab;
