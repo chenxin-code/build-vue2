@@ -59,3 +59,15 @@ export function deepClone(iniObj, finalObj, first = true) {
 	}
 	return obj;
 }
+
+// 从数组里选出随机元素
+export function getRandomElementFromArray(arr, num){
+	var sData = arr.slice(0), i = arr.length, min = i - num, item, index;
+	while (i-- > min) {
+		index = Math.floor((i + 1) * Math.random());
+		item = sData[index];
+		sData[index] = sData[i];
+		sData[i] = item;
+	}
+	return sData.slice(min);
+}

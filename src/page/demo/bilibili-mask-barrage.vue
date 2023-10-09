@@ -24,6 +24,7 @@
 
 <script>
 import Barrage from 'barrage-ui';
+import {getRandomElementFromArray} from '@/toolFunc';
 
 export default {
   mounted() {
@@ -36,19 +37,8 @@ export default {
       container: container,
     });
 
-    const getRandomArrayValue = (arr, num) => {
-      var sData = arr.slice(0), i = arr.length, min = i - num, item, index;
-      while (i-- > min) {
-        index = Math.floor((i + 1) * Math.random());
-        item = sData[index];
-        sData[index] = sData[i];
-        sData[i] = item;
-      }
-      return sData.slice(min);
-    };
-
     const textList = Array.from({length: 999999}, () => {
-      return getRandomArrayValue([
+      return getRandomElementFromArray([
         '从前从前有个人爱你很久但偏偏风渐渐把距离吹得好远',
         '天空灰的像哭过离开你以后并没有更自由',
         '我只能永远读着对白读着我给你的伤害',

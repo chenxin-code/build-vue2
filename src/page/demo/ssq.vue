@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import {getRandomElementFromArray} from '@/toolFunc';
+
 export default {
   data() {
     return {
@@ -77,8 +79,8 @@ export default {
     jixuan() {
       let jixuanResult = [];
       for (let i = 0; i < this.zhushu; i++) {
-        let red = this.bubbleSort(this.getRandomArrayValue(this.redBall, 6));
-        let blue = this.getRandomArrayValue(this.blueBall, 1);
+        let red = this.bubbleSort(getRandomElementFromArray(this.redBall, 6));
+        let blue = getRandomElementFromArray(this.blueBall, 1);
         let red_format = [];
         let blue_format = [];
         red.forEach(item => {
@@ -102,8 +104,8 @@ export default {
       this.jixuanResult = jixuanResult;
     },
     kaijiang() {
-      let kj_redBall = this.bubbleSort(this.getRandomArrayValue(this.redBall, 6)),
-          kj_blueBall = this.getRandomArrayValue(this.blueBall, 1);
+      let kj_redBall = this.bubbleSort(getRandomElementFromArray(this.redBall, 6)),
+          kj_blueBall = getRandomElementFromArray(this.blueBall, 1);
       this.kj_red1 = kj_redBall[0];
       this.kj_red2 = kj_redBall[1];
       this.kj_red3 = kj_redBall[2];
@@ -157,16 +159,6 @@ export default {
         this.leijiZhongjiang += item1.duijiang;
       });
       this.leijiCost += this.jixuanResult.length * 2;
-    },
-    getRandomArrayValue(arr, num) {
-      var sData = arr.slice(0), i = arr.length, min = i - num, item, index;
-      while (i-- > min) {
-        index = Math.floor((i + 1) * Math.random());
-        item = sData[index];
-        sData[index] = sData[i];
-        sData[i] = item;
-      }
-      return sData.slice(min);
     },
     // 冒泡排序
     bubbleSort(arr) {
