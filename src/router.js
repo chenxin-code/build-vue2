@@ -124,6 +124,10 @@ const router = new VueRouter({
 					path: 'camera',
 					component: resolve => require(['@/page/demo/camera'], resolve),
 				},
+				{
+					path: 'bilibili-mask-barrage',
+					component: resolve => require(['@/page/demo/bilibili-mask-barrage'], resolve),
+				},
 			],
 		},
 		{

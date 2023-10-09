@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-divider>demo秀</el-divider>
+    <el-divider>DEMO</el-divider>
     <el-button-group>
       <el-button :type="$route.path === '/demo/' + item.path ? 'primary' : ''"
                  @click="$router.push({ path: '/demo/' + item.path });"
@@ -28,6 +28,7 @@ export default {
 				{title: '迷宫', path: 'maze'},
 				{title: '3D地球', path: '3d-earth'},
         {title: '摄像头', path: 'camera'},
+        {title: 'B站蒙版弹幕', path: 'bilibili-mask-barrage'},
 			],
 		};
 	},
