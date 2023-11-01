@@ -5,7 +5,7 @@ module.exports = {
 	},
 	'extends': [
 		'eslint:recommended',
-		'plugin:vue/vue3-essential'
+		'plugin:vue/essential', //'plugin:vue/recommended',
 	],
 	'overrides': [
 		{
