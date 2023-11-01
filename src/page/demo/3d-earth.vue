@@ -14,10 +14,10 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import * as TWEEN from '@tweenjs/tween.js';
 
-let scene;
 export default {
   data() {
     return {
+      scene: null,
       earthDom: null,
       webGLRenderer: null,
       animationType: true, // 地球入场动画
@@ -29,7 +29,9 @@ export default {
   methods: {
     // 渲染
     render() {
-      this.webGLRenderer.clear();
+      if (this.webGLRenderer) {
+        this.webGLRenderer.clear();
+      }
       // 地球入场动画
       if (this.animationType) {
         this.fov -= 0.6;
@@ -49,26 +51,32 @@ export default {
           this.perspectiveCamera.lookAt(0, 0, 0);
         }
       }
-      // 自转
-      if (this.rotation) {
-        scene.rotation.y += 0.003;
+      if (this.scene) {
+        // 自转
+        if (this.rotation) {
+          this.scene.rotation.y += 0.003;
+        }
+        if (this.webGLRenderer) {
+          this.webGLRenderer.render(this.scene, this.perspectiveCamera);
+        }
       }
-      this.webGLRenderer.render(scene, this.perspectiveCamera);
       requestAnimationFrame(this.render);
       TWEEN.update();
     },
     orbitControlsAction() {
-      let orbitControls = new OrbitControls(this.perspectiveCamera, this.webGLRenderer.domElement);
-      orbitControls.enableDamping = true;
-      orbitControls.enableZoom = true;
-      orbitControls.autoRotate = false;
-      orbitControls.autoRotateSpeed = 2;
-      orbitControls.enablePan = true;
+      if (this.webGLRenderer) {
+        let orbitControls = new OrbitControls(this.perspectiveCamera, this.webGLRenderer.domElement);
+        orbitControls.enableDamping = true;
+        orbitControls.enableZoom = true;
+        orbitControls.autoRotate = false;
+        orbitControls.autoRotateSpeed = 2;
+        orbitControls.enablePan = true;
+      }
     },
   },
   mounted() {
     // 场景
-    scene = new THREE.Scene();
+    this.scene = new THREE.Scene();
     // 渲染
     this.webGLRenderer = new THREE.WebGLRenderer({antialias: true});
     this.earthDom = this.$refs.earth;
@@ -87,8 +95,8 @@ export default {
     this.orbitControlsAction();
     // 纹理贴图
     let textureLoader = new THREE.TextureLoader();
-    textureLoader.load(require('@/res/3d-earth/earth.jpg'), function (texture) {
-      // 创建地球
+    textureLoader.load(require('@/res/3d-earth/earth.jpg'), (texture) => {
+      // 创建球体
       let sphereGeometry = new THREE.SphereGeometry(70, 100, 100);
       // 设置颜色贴图属性值
       let meshBasicMaterial = new THREE.MeshBasicMaterial({map: texture});
@@ -97,9 +105,13 @@ export default {
       // 唯一标识
       mesh.name = '3d-earth';
       // 添加到场景中
-      scene.add(mesh);
+      this.scene.add(mesh);
     });
     this.render();
+  },
+  destroyed() {
+    this.scene = null;
+    this.webGLRenderer = null;
   },
 };
 </script>
