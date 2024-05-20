@@ -1,7 +1,7 @@
 <template>
   <!--  大组件使用场景：①异步组件方式引入 -->
   <div class="big-content-box">
-    <div class="item" v-for="n in 9999"/>
+    <div class="item" v-for="n in 9999" :key="n"/>
   </div>
 </template>
 
