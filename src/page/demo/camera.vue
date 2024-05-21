@@ -1,8 +1,6 @@
 <template>
   <div>
-    <el-link type="warning" icon="el-icon-document"
-             href="https://blog.csdn.net/qq_44979541/article/details/129765021" target="_blank">参考CSDN
-    </el-link>
+    <referLink href="https://blog.csdn.net/qq_44979541/article/details/129765021"/>
     <video ref="video" :width="width" :height="height" autoplay/>
     <canvas ref="canvas" :width="width" :height="height"/>
     <el-button-group>
@@ -13,7 +11,12 @@
 </template>
 
 <script>
+import referLink from '@/component/refer-link';
+
 export default {
+  components: {
+    referLink,
+  },
   data() {
     return {
       width: 300,

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <el-link type="warning" icon="el-icon-document"
-             href="https://blog.csdn.net/weixin_43840202/article/details/117398825" target="_blank">参考CSDN
-    </el-link>
+    <referLink href="https://blog.csdn.net/weixin_43840202/article/details/117398825"/>
     <el-button-group>
       <el-button :type="$route.path === '/demo/maze/' + item.path ? 'primary' : ''"
                  @click="$router.push({ path: '/demo/maze/' + item.path });"
@@ -17,7 +15,12 @@
 </template>
 
 <script>
+import referLink from '@/component/refer-link';
+
 export default {
+  components: {
+    referLink,
+  },
 	data() {
 		return {
 			mazeIndex: [

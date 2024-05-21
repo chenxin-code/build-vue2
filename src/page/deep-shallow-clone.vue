@@ -1,21 +1,19 @@
 <template>
   <div>
     <h1>深浅拷贝</h1>
-    <el-link
-        type="warning"
-        icon="el-icon-document"
-        href="https://blog.csdn.net/weixin_37719279/article/details/81240658"
-        target="_blank">
-      参考CSDN
-    </el-link>
+    <referLink href="https://blog.csdn.net/weixin_37719279/article/details/81240658"/>
   </div>
 </template>
 
 <script>
 import {shallowClone, deepClone} from '@/toolFunc';
 import _ from 'lodash';
+import referLink from '@/component/refer-link';
 
 export default {
+  components: {
+    referLink,
+  },
   data() {
     return {
       obj1: {
