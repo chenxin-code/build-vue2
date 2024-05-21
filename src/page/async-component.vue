@@ -1,41 +1,34 @@
 <template>
-  <div>
-    <div>
-      <h1>同步组件</h1>
-      <h1>异步组件</h1>
+  <div style="display: flex">
+    <div style="flex: 1;margin: 0 10px">
+      <el-divider>同步组件</el-divider>
+      <el-button type="primary" @click="showBigContentSync = !showBigContentSync">change</el-button>
+      <bigContentSync v-if="showBigContentSync"/>
     </div>
-    <div>
-      <div>
-        <div>
-          <div>
-            <bigContent v-if="showBigContent"/>
-          </div>
-        </div>
-      </div>
+    <div style="flex: 1;margin: 0 10px">
+      <el-divider>异步组件</el-divider>
+      <el-button type="primary" @click="showBigContentAsync = !showBigContentAsync">change</el-button>
+      <bigContentAsync v-if="showBigContentAsync"/>
     </div>
-    <div></div>
   </div>
 </template>
 
 <script>
-// import bigContent from '@/component/big-content'; // 同步组件
-const bigContent = () => import('@/component/big-content');// 异步组件
+import bigContentSync from '@/component/big-content-1.vue'; // 同步组件
+const bigContentAsync = () => import('@/component/big-content-2.vue');// 异步组件
 
 export default {
-	components: {
-		bigContent,
-	},
-	data() {
-		return {
-			showBigContent: false,
-		};
-	},
-	mounted() {
-		setTimeout(() => {
-			this.showBigContent = true;
-			console.log('虚拟DOM', this._vnode);
-		}, 3000);
-	},
+  components: {
+    bigContentSync,
+    bigContentAsync,
+  },
+  data() {
+    return {
+      showBigContentSync: false,
+      showBigContentAsync: false,
+    };
+  },
+  mounted() {},
 };
 </script>
 
