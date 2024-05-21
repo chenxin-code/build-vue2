@@ -4,6 +4,7 @@
         type="success"
         icon="el-icon-document"
         target="_blank"
+        ref="elLink"
         v-bind="$attrs"
         v-on="$listeners">参考
     </el-link>
@@ -15,6 +16,14 @@ export default {
   mounted() {
     console.log('$attrs', this.$attrs);
     console.log('$listeners', this.$listeners);
+
+    // 继承
+    for (const [key, value] of Object.entries(this.$refs.elLink)) {
+      if (!(key.includes('$') || key.includes('_'))) {
+        console.log('继承', key, value);
+        this[key] = value;
+      }
+    }
   },
 };
 </script>
