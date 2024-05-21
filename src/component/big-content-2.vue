@@ -1,6 +1,6 @@
 <template>
   <!--  大组件使用场景：①异步组件方式引入 -->
-  <div class="big-content-box">
+  <div class="big-content-2-box">
     <div class="item" v-for="n in 9999" :key="n"/>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.big-content-box {
+.big-content-2-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
