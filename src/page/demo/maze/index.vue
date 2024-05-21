@@ -1,7 +1,7 @@
 <template>
   <div>
     <referLink href="https://blog.csdn.net/weixin_43840202/article/details/117398825"/>
-    <el-button-group>
+    <el-button-group style="margin-top: 10px">
       <el-button :type="$route.path === '/demo/maze/' + item.path ? 'primary' : ''"
                  @click="$router.push({ path: '/demo/maze/' + item.path });"
                  :disabled="$route.path === '/demo/maze/' + item.path"
