@@ -18,6 +18,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 10px 0;
   border: 2px solid dodgerblue;
 
   .item {
