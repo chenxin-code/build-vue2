@@ -12,6 +12,9 @@
 </template>
 
 <script>
+/*
+参考：https://blog.csdn.net/cwin8951/article/details/130971885
+*/
 export default {
   mounted() {
     console.log('$attrs', this.$attrs);
