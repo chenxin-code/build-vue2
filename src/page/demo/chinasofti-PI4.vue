@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 15px 0;">
+  <div style="padding: 15px 0">
     <div class="row">
       <div class="col">字母</div>
       <div class="col">时间</div>
@@ -18,7 +18,13 @@
         <el-input v-model="item2.content" placeholder="请输入内容" clearable />
       </div>
     </div>
-    <el-button type="primary" icon="el-icon-plus" @click="submit()">批量创建</el-button>
+    <el-button type="primary" icon="el-icon-plus" style="margin-top: 10px" @click="submit()">批量创建</el-button>
+    <el-alert
+        :description="JSON.stringify(submitArr)"
+        type="success"
+        :closable="false"
+        center
+        style="margin-top: 10px;width: 600px"/>
   </div>
 </template>
 
@@ -29,46 +35,47 @@ export default {
 	data() {
 		return {
 			rowData: [],
-			lineData: []
+			lineData: [],
+      submitArr: []
 		};
 	},
 	methods: {
-		submit() {
-			let arr = [];
-			this.rowData.forEach(item1 => {
-				item1.colData.forEach(item2 => {
-					if(item2.content){
-						arr.push({
-							rowName: item1.rowName,
-							time: item1.time,
-							colName: item2.colName,
-							content: item2.content,
-						});
-					}
-				});
-			});
-			console.log(arr);
-		}
+    submit() {
+      this.submitArr = [];
+      this.rowData.forEach(item1 => {
+        item1.colData.forEach(item2 => {
+          if (item2.content) {
+            this.submitArr.push({
+              rowName: item1.rowName,
+              time: item1.time,
+              colName: item2.colName,
+              content: item2.content,
+            });
+          }
+        });
+      });
+      console.log('submitArr', this.submitArr);
+    }
 	},
-	mounted() {
-		// 动态产品线
-		this.lineData = ['产品线1', '产品线2', '产品线3', '产品线4', '产品线5'];
-		let colData = [];
-		this.lineData.forEach(item=>{
-			colData.push({
-				colName: item,
-				content: null,
-			});
-		});
-		// 动态字母
-		['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach(item=>{
-			this.rowData.push({
-				rowName: item,
-				time: 1,
-				colData: _.cloneDeep(colData), // 必须使用深拷贝
-			});
-		});
-	}
+  mounted() {
+    // 动态产品线
+    this.lineData = ['产品线1', '产品线2', '产品线3', '产品线4', '产品线5'];
+    let colData = [];
+    this.lineData.forEach(item => {
+      colData.push({
+        colName: item,
+        content: null,
+      });
+    });
+    // 动态字母
+    ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach(item => {
+      this.rowData.push({
+        rowName: item,
+        time: 1,
+        colData: _.cloneDeep(colData), // 必须使用深拷贝
+      });
+    });
+  }
 };
 </script>
 
