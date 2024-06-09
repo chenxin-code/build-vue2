@@ -10,6 +10,20 @@
         <el-button type="primary" @click="getTaobaoSearchSuggest()">get</el-button>
       </el-tab-pane>
     </el-tabs>
+    <el-alert
+        title="百度新闻"
+        :description="JSON.stringify(baiduNewsResp)"
+        type="success"
+        :closable="false"
+        center
+        style="margin-top: 10px;width: 1200px"/>
+    <el-alert
+        title="淘宝搜索提示"
+        :description="JSON.stringify(taobaoSearchSuggestResp)"
+        type="success"
+        :closable="false"
+        center
+        style="margin-top: 10px;width: 600px"/>
   </div>
 </template>
 
@@ -21,7 +35,9 @@ export default {
   data() {
     return {
       activeName: '百度新闻',
-      query: '周杰伦'
+      query: '热干面',
+      baiduNewsResp: null,
+      taobaoSearchSuggestResp: null,
     };
   },
   methods: {
@@ -36,7 +52,8 @@ export default {
             ajax: 'json',
           },
         }).then(resp => {
-          console.log('baiduNews', resp.data.data.LocalNews.data.rows);
+          console.log('baiduNewsResp', resp.data.data.LocalNews.data.rows);
+          this.baiduNewsResp = resp.data.data.LocalNews.data.rows;
         });
       });
     },
@@ -50,7 +67,8 @@ export default {
             q: this.query,
           },
         }).then(resp => {
-          console.log('taobaoSearchSuggest', resp.data.result);
+          console.log('taobaoSearchSuggestResp', resp.data.result);
+          this.taobaoSearchSuggestResp = resp.data.result;
         });
       });
     }
