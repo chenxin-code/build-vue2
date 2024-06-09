@@ -135,8 +135,8 @@ const router = new VueRouter({
 			component: resolve => require(['@/page/env'], resolve),
 		},
 		{
-			path: '/async-component',
-			component: resolve => require(['@/page/async-component'], resolve),
+			path: '/sync-async-component',
+			component: resolve => require(['@/page/sync-async-component'], resolve),
 		},
 		{
 			path: '/deep-shallow-clone',
