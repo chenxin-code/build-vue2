@@ -135,6 +135,10 @@ const router = new VueRouter({
 			component: resolve => require(['@/page/env'], resolve),
 		},
 		{
+			path: '/defer',
+			component: resolve => require(['@/page/defer'], resolve),
+		},
+		{
 			path: '/sync-async-component',
 			component: resolve => require(['@/page/sync-async-component'], resolve),
 		},

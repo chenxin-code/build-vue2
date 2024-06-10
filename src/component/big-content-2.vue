@@ -1,5 +1,5 @@
 <template>
-  <!--  大组件使用场景：①异步组件方式引入 -->
+  <!--  大组件使用场景：①异步组件方式引入 ②请求动画帧优化白屏 -->
   <div class="big-content-2-box">
     <div class="item" v-for="n in 9999" :key="n"/>
   </div>

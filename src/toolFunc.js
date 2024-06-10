@@ -71,3 +71,29 @@ export function getRandomElementFromArray(arr, num){
 	}
 	return sData.slice(min);
 }
+
+// requestAnimationFrame 请求动画帧 （白屏优化）
+import Vue from 'vue';
+const vue = new Vue({
+	data() {
+		return {
+			frameCount: 0,
+		};
+	},
+});
+export function defer(maxFrameCount = 999) {
+	vue.$data.frameCount = 0;
+	let rafId;
+	const addFrameCount = () => {
+		vue.$data.frameCount++;
+		// 只要没到最大帧数就一直调用
+		if (vue.$data.frameCount < maxFrameCount) {
+			rafId = requestAnimationFrame(addFrameCount);
+		}
+	};
+	addFrameCount();
+	return (n) => {
+		// console.log(vue.$data.frameCount >= n, vue.$data.frameCount, n);
+		return vue.$data.frameCount >= n;// 判断当前渲染帧数是否大于自定义n
+	};
+}
