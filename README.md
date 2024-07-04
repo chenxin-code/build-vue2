@@ -27,11 +27,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 📖 **/demo**
 
-DEMO展示
+DEMO展示（水滴、数据监控、魔兽英雄PK、模拟双色球、中软PI4版本批量创建计划、前端生成Excel、迷宫、3D地球、摄像头、B站蒙版弹幕）
 
 📖 **/defer**
 
-requestAnimationFrame 请求动画帧 （白屏优化）
+白屏优化
 
 📖 **/sync-async-component**
 
