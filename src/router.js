@@ -94,8 +94,8 @@ const router = new VueRouter({
 					component: resolve => require(['@/page/demo/ssq'], resolve),
 				},
 				{
-					path: 'chinasofti-PI4',
-					component: resolve => require(['@/page/demo/chinasofti-PI4'], resolve),
+					path: 'batch-create-plan',
+					component: resolve => require(['@/page/demo/batch-create-plan'], resolve),
 				},
 				{
 					path: 'exportExcel',
