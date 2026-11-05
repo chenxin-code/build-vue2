@@ -31,6 +31,7 @@ export default {
 				{title: '3D地球', path: '3d-earth'},
         {title: '摄像头', path: 'camera'},
         {title: 'B站蒙版弹幕', path: 'bilibili-mask-barrage'},
+        {title: '兄弟组件通信', path: 'brother-component'},
 			],
 		};
 	},
