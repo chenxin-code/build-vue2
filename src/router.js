@@ -128,6 +128,10 @@ const router = new VueRouter({
 					path: 'brother-component',
 					component: resolve => require(['@/page/demo/brother-component'], resolve),
 				},
+				{
+					path: 'sync-async-component',
+					component: resolve => require(['@/page/demo/sync-async-component'], resolve),
+				},
 			],
 		},
 		{
@@ -137,10 +141,6 @@ const router = new VueRouter({
 		{
 			path: '/defer',
 			component: resolve => require(['@/page/defer'], resolve),
-		},
-		{
-			path: '/sync-async-component',
-			component: resolve => require(['@/page/sync-async-component'], resolve),
 		},
 		{
 			path: '/deep-shallow-clone',

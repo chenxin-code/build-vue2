@@ -32,6 +32,7 @@ export default {
         {title: '摄像头', path: 'camera'},
         {title: 'B站蒙版弹幕', path: 'bilibili-mask-barrage'},
         {title: '兄弟组件通信', path: 'brother-component'},
+        {title: '同步/异步组件测试', path: 'sync-async-component'},
 			],
 		};
 	},
