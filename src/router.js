@@ -35,17 +35,6 @@ const router = new VueRouter({
 			},
 		},
 		{
-			path: '/css',
-			component: resolve => require(['@/page/css/index'], resolve),
-			// 嵌套路由
-			children: [
-				{
-					path: 'flex',
-					component: resolve => require(['@/page/css/flex'], resolve),
-				},
-			],
-		},
-		{
 			path: '/es6',
 			component: resolve => require(['@/page/es6/index'], resolve),
 			// 嵌套路由
@@ -135,6 +124,17 @@ const router = new VueRouter({
 				{
 					path: 'Object.freeze',
 					component: resolve => require(['@/page/demo/Object.freeze'], resolve)
+				},
+				{
+					path: 'css',
+					component: resolve => require(['@/page/demo/css/index'], resolve),
+					// 嵌套路由
+					children: [
+						{
+							path: 'flex',
+							component: resolve => require(['@/page/demo/css/flex'], resolve),
+						},
+					],
 				},
 			],
 		},

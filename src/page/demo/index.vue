@@ -36,6 +36,7 @@ export default {
         {title: '同步/异步组件测试', path: 'sync-async-component'},
         {title: '第三方接口测试', path: 'test-api'},
         {title: '冻结测试', path: 'Object.freeze'},
+        {title: 'CSS示例', path: 'css'},
 			],
 		};
 	},
