@@ -132,6 +132,10 @@ const router = new VueRouter({
 					path: 'test-api',
 					component: resolve => require(['@/page/demo/test-api'], resolve),
 				},
+				{
+					path: 'Object.freeze',
+					component: resolve => require(['@/page/demo/Object.freeze'], resolve)
+				},
 			],
 		},
 		{
@@ -149,10 +153,6 @@ const router = new VueRouter({
 		{
 			path: '/defineProperty-Proxy',
 			component: resolve => require(['@/page/defineProperty-Proxy'], resolve)
-		},
-		{
-			path: '/Object.freeze',
-			component: resolve => require(['@/page/Object.freeze'], resolve)
 		},
 		{
 			path: '/404',
