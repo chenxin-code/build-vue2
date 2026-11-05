@@ -17,10 +17,6 @@ const router = new VueRouter({
 			component: resolve => require(['@/page/lodash'], resolve),
 		},
 		{
-			path: '/father-son-component',
-			component: resolve => require(['@/page/father-son-component'], resolve),
-		},
-		{
 			path: '/before-enter',
 			component: resolve => require(['@/page/before-enter'], resolve),
 			// 路由独享的守卫
@@ -119,6 +115,10 @@ const router = new VueRouter({
 				{
 					path: 'bilibili-mask-barrage',
 					component: resolve => require(['@/page/demo/bilibili-mask-barrage'], resolve),
+				},
+				{
+					path: 'father-son-component',
+					component: resolve => require(['@/page/demo/father-son-component'], resolve),
 				},
 				{
 					path: 'brother-component',
