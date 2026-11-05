@@ -21,10 +21,6 @@ const router = new VueRouter({
 			component: resolve => require(['@/page/father-son-component'], resolve),
 		},
 		{
-			path: '/test-api',
-			component: resolve => require(['@/page/test-api'], resolve),
-		},
-		{
 			path: '/before-enter',
 			component: resolve => require(['@/page/before-enter'], resolve),
 			// 路由独享的守卫
@@ -131,6 +127,10 @@ const router = new VueRouter({
 				{
 					path: 'sync-async-component',
 					component: resolve => require(['@/page/demo/sync-async-component'], resolve),
+				},
+				{
+					path: 'test-api',
+					component: resolve => require(['@/page/demo/test-api'], resolve),
 				},
 			],
 		},
