@@ -2,6 +2,10 @@
 
 Vue 2 学习项目，包含丰富的 DEMO 示例，涵盖组件通信、路由守卫、性能优化、3D 可视化、弹幕动画等前端核心技能。
 
+## 在线演示
+
+访问 https://chenxin-code.github.io/build-vue2/
+
 ## 技术栈
 
 - **框架**: Vue 2.6 + Vue Router 3 + Vuex 3
