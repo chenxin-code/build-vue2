@@ -10,7 +10,7 @@ export default {
 			pathVisited: [], // 求解访问数据
 			exitX: 0,
 			exitY: 0,
-			className: ['wall', 'road', 'path'],
+			className: ['wall', 'road', 'path', 'visited'],
 		};
 	},
 	methods: {

@@ -69,6 +69,11 @@ export default {
 		this.basicMap[this.exitX][this.exitY] = 1;
 		this.$forceUpdate();// 必须强制更新
 
+		// 初始化 prePath 二维数组
+		for (let i = 0; i < this.basicMap.length; i++) {
+			this.prePath.push(new Array(this.basicMap[i].length).fill(null));
+		}
+
 		// 渲染地图
 		this.renderMap();
 		// 处理生成迷宫

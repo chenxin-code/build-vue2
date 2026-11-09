@@ -47,7 +47,7 @@ export default {
   width: 100%;
 }
 
-/deep/ .wall, /deep/ .road, /deep/ .path {
+/deep/ .wall, /deep/ .road, /deep/ .path, /deep/ .visited {
   width: 30px;
   height: 30px;
   display: inline-block;
@@ -63,5 +63,9 @@ export default {
 
 /deep/ .path {
   background: #f57a7a;
+}
+
+/deep/ .visited {
+  background: #999999;
 }
 </style>
