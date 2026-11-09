@@ -21,7 +21,7 @@ Vue 2 学习项目，包含丰富的 DEMO 示例，涵盖组件通信、路由�
 # 安装依赖
 npm install
 
-# 启动开发服务器 (默认 http://localhost:8080)
+# 启动开发服务器 (默认 http://localhost:666)
 npm run serve
 
 # 生产环境构建
@@ -99,3 +99,18 @@ src/
 
 - [Vue CLI 配置文档](https://cli.vuejs.org/zh/config/)
 - [Vue 2 官方文档](https://cn.vuejs.org/v2/guide/)
+
+## 自动部署
+
+本项目已配置 GitHub Actions 自动部署到 GitHub Pages：
+
+- **触发条件**: 推送代码到 `main` 分支
+- **部署流程**: 自动构建 → 发布到 `gh-pages` 分支 → GitHub Pages 读取
+- **访问地址**: https://chenxin-code.github.io/build-vue2/
+
+### 部署配置
+
+- `.github/workflows/deploy.yml` - GitHub Actions 工作流配置
+- `vue.config.js` - `publicPath` 根据环境动态设置：
+  - 开发环境: `/`
+  - 生产环境: `/build-vue2/`
