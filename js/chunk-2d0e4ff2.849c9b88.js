@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([["chunk-2d0e4ff2"],{9335:function(n,e,o){o.r(e);var t={computed:{node_environment(){return"production"}},mounted(){}},o=o("2877"),o=Object(o.a)(t,function(){var n=this;return(0,n._self._c)("p",[n._v("当前环境："+n._s(n.node_environment))])},[],!1,null,"5c83adca",null);e.default=o.exports}}]);
