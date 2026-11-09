@@ -1,15 +1,17 @@
 <template>
   <div>
     <referLink href="https://blog.csdn.net/weixin_43840202/article/details/117398825"/>
-    <el-button-group style="margin-top: 10px">
-      <el-button :type="$route.path === '/demo/maze/' + item.path ? 'primary' : ''"
-                 @click="$router.push({ path: '/demo/maze/' + item.path });"
-                 :disabled="$route.path === '/demo/maze/' + item.path"
-                 size="small"
-                 v-for="(item,index) in mazeIndex" :key="index">
-        {{ item.title }}
-      </el-button>
-    </el-button-group>
+    <div class="button-group-wrapper">
+      <el-button-group>
+        <el-button :type="$route.path === '/demo/maze/' + item.path ? 'primary' : ''"
+                   @click="$router.push({ path: '/demo/maze/' + item.path });"
+                   :disabled="$route.path === '/demo/maze/' + item.path"
+                   size="small"
+                   v-for="(item,index) in mazeIndex" :key="index">
+          {{ item.title }}
+        </el-button>
+      </el-button-group>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -36,6 +38,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.button-group-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  overflow-x: auto;
+}
+
+.button-group-wrapper /deep/ .el-button-group {
+  flex-wrap: nowrap;
+  display: inline-flex;
+}
+
 //路由子组件的公共样式，因此父组件里需要使用深度选择器
 /deep/ #map {
   border: 2px solid #6a6f77;
