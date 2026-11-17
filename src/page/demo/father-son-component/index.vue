@@ -1,8 +1,7 @@
 <template>
   <div style="padding: 20px;background-color: lightgreen;">
-    <h1>父子组件通信</h1>
     <p>我有金钱（<span style="color: red;">{{ money }}</span>）传给儿子</p>
-    <p>我有消息（<span style="color: red;">{{ _provided.msg }}</span>）传给儿子、儿子的儿子</p>
+    <p>我通过<span style="color: blue;">provide</span>把消息（<span style="color: blue;">{{ _provided.msg }}</span>）传给儿子、孙子</p>
     <button style="margin-bottom: 5px;cursor: pointer;" @click="$refs.son.moneyPlus1()">$refs调用子组件方法（金钱+1）</button>
     <br/>
     <button style="margin-bottom: 20px;cursor: pointer;" @click="$children[0].moneyPlus1()">$children调用子组件方法（金钱+1）
